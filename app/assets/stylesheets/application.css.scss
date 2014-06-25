@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+footer, .push {
+clear: both;
+}
+
+footer{
+  width: 100%;
+  height: 250px;
+  background: #eee;
+  margin-bottom: 0;
+  border-top: 3px solid #eee;
+  clear: both;
+}

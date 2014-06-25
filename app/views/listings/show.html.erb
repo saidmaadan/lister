@@ -1,0 +1,29 @@
+<article >
+  <header>
+    
+    <h1><%= @listing.title %></h1>
+    
+  </header>
+  
+  <p>
+    <%= @listing.summary %>
+  </p>
+  
+  <h3>Price</h3>
+  <p>
+    <%= format_price(@listing) %>
+  </p>
+  
+  <h3>Location</h3>
+  <p>
+    <%= @listing.address %>
+  </p>
+  
+    <nav>
+      <%= link_to 'Edit', edit_listing_path(@listing), class: 'button' %>
+      <%= link_to 'Delete', @listing, 
+                  class: 'button',
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+    </nav>
+  
+</article>

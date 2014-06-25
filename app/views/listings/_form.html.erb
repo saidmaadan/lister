@@ -1,0 +1,76 @@
+<%= form_for(@listing) do |f| %>
+  <%= render "shared/errors", object: @listing %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :title %>
+        <%= f.text_field :title, autofocus: true %>
+      </li>
+      <li class="required">
+        <%= f.label :summary %>
+        <%= f.text_area :summary, cols: 40, rows: 7 %>
+      </li>
+      <li class="required">
+        <%= f.label :address %>
+        <%= f.text_field :address, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :pricing %>
+        <%= f.number_field :pricing, size: 6 %>
+      </li>
+      <li class="required">
+        <%= f.label :accomodate %>
+        <%= f.text_field :accomodate, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :apartment_type %>
+        <%= f.text_field :apartment_type, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :image %>
+        <%= f.text_field :image, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :amenities %>
+        <%= f.text_field :amenities, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :bedroom %>
+        <%= f.number_field :bedroom, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :bathroom %>
+        <%= f.number_field :bathroom, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :contact_name %>
+        <%= f.text_field :contact_name, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :company_name %>
+        <%= f.text_field :company_name, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :phone %>
+        <%= f.text_field :phone, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :website_url %>
+        <%= f.text_field :website_url, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :user_type %>
+        <%= f.text_field :user_type, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :info, 'More Info' %>
+        <%= f.text_field :info, size: 30 %>
+      </li>
+      
+    </ol>
+    <p>
+      <%= f.submit %>
+      <%= link_to "Cancel", listings_path, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>

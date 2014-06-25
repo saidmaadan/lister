@@ -1,3 +1,28 @@
-<h1>
-The time is <%= @listings %>
-</h1>
+<ul>
+  <% @listings.each do |listing| %>
+    <li>
+      <article>
+        <header>
+        
+          <h2><%= link_to(listing.title, listing) %></h2>
+          
+        </header>
+        <p>
+          <%= truncate(listing.summary, length: 150, separator: ' ') %>
+        </p>
+        <table>
+          <tr>
+            <th>Location</th>
+            <td><%= listing.address %></td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td><%= format_price(listing) %></td>
+          </tr>
+        </table>
+        <footer>
+        </footer>
+      </article>
+    </li>
+  <% end %>
+</ul>
