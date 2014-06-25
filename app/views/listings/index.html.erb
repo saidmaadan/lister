@@ -5,6 +5,7 @@
         <header>
         
           <h2><%= link_to(listing.title, listing) %></h2>
+          <%= image_tag listing.upload.url %>
           
         </header>
         <p>
@@ -20,8 +21,6 @@
             <td><%= format_price(listing) %></td>
           </tr>
         </table>
-        <footer>
-        </footer>
       </article>
     </li>
   <% end %>

@@ -13,16 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ @import "foundation";
 
-footer, .push {
-clear: both;
+.top-bar{
+	background: green;
+	line-height: 60px;
 }
-
 footer{
   width: 100%;
   height: 250px;
-  background: #eee;
+  background: #005500;
   margin-bottom: 0;
   border-top: 3px solid #eee;
   clear: both;
 }
+footer, .push {
+clear: both;
+}
+

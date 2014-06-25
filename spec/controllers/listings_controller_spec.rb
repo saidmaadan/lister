@@ -130,4 +130,74 @@ end
 	  end
 	end
 
+	describe "set validation" do 	
+
+		it "requires a title" do
+		  listing = Listing.new(title: "")
+
+		  listing.valid?
+
+		  expect(listing.errors[:title].any?).to be_true
+		end
+
+		it "requires a listing summary" do
+		  listing = Listing.new(summary: "")
+
+			  listing.valid?
+
+			  expect(listing.errors[:summary].any?).to be_true
+		end
+
+		it "accepts a summary up to 500 characters" do
+		  listing = Listing.new(summary: "X" * 501)
+
+				  listing.valid?
+
+				  expect(listing.errors[:summary].any?).to be_true
+			end
+
+		it "requires a listing address" do
+			  listing = Listing.new(address: "")
+
+				  listing.valid?
+
+				  expect(listing.errors[:address].any?).to be_true
+			end
+
+		it "rejects a $0 listing price" do
+
+		  listing = Listing.new(pricing: 0.00)
+
+			  listing.valid?
+
+			  expect(listing.errors[:pricing].any?).to be_true
+		end
+
+
+		it "rejects a negative listing price" do
+		  listing = Listing.new(pricing: -10.00)
+
+		  listing.valid?
+
+		  expect(listing.errors[:pricing].any?).to be_true
+		end
+
+		it "accepts properly formatted website URLs" do
+		  sites = %w[http://example.com https://example]
+		  sites.each do |site|
+		    listing = Listing.new(website_url: site)
+		    listing.valid?
+		    expect(listing.errors[:website_url].any?).to be_false
+		  end
+		end
+
+		it "rejects improperly formatted website URLs" do
+		  sites = %w[example.com http examplehttp]
+		  sites.each do |site|
+		    listing = Listing.new(website_url: site)
+		    listing.valid?
+		    expect(listing.errors[:website_url].any?).to be_true
+		  end
+		end
+	end
 end

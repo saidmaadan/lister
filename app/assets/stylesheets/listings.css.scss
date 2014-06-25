@@ -1,3 +1,15 @@
 // Place all the styles related to the listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+footer{
+  width: 100%;
+  height: 250px;
+  background: #005500;
+  margin-bottom: 0;
+  border-top: 3px solid #eee;
+  clear: both;
+}
+footer, .push {
+clear: both;
+}
+

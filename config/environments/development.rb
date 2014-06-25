@@ -9,6 +9,14 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
   Paperclip.options[:command_path] = "/usr/bin/"
+#   config.paperclip_defaults = {
+#   :storage => :s3,
+#   :s3_credentials => {
+#     :bucket => ENV['saidmfola'],
+#     :access_key_id => ENV['AKIAIHKZTDWOW7I433ZQ'],
+#     :secret_access_key => ENV['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']
+#   }
+# }
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

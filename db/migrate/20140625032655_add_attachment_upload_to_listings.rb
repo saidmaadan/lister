@@ -1,7 +1,7 @@
 class AddAttachmentUploadToListings < ActiveRecord::Migration
   def self.up
     change_table :listings do |t|
-      t.attachment :upload
+      t.attachment :listings, :upload
     end
   end
 

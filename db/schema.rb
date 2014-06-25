@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625032655) do
+ActiveRecord::Schema.define(version: 20140625221956) do
 
   create_table "listings", force: true do |t|
     t.string   "home_type"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20140625032655) do
     t.string   "title"
     t.text     "summary"
     t.string   "apartment_type"
-    t.string   "image"
     t.string   "amenities"
     t.decimal  "bedroom"
     t.decimal  "bathroom"
