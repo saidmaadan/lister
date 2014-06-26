@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'listings#index'
-  resources :listings
+  
+
+  root 'listings#index'
+  resources :listings do 
+    resources :enquiries
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

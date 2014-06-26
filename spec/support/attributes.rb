@@ -6,4 +6,12 @@ def listing_attributes(overrides = {})
     address: '18st Austin TX!',
     home_type: 'apartment'
 		}.merge(overrides)
-	end
+end
+
+def enquiry_attributes(overrides = {})
+  {
+    name: "Greg Brown", 
+    email: "greg@gmail.com",
+    comment: "I like to no more about this property"     
+  }.merge(overrides)
+end

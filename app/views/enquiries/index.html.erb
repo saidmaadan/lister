@@ -1,0 +1,14 @@
+ <h1>Enquiries for <%= link_to @listing.title, @listing %></h1>
+</header>
+
+<ol>
+  <% @enquiries.each do |e| %>
+    <li>
+      <%= mail_to(e.email, e.name) %>
+      <span>
+        <%= time_ago_in_words(e.created_at) %> ago
+      </span>
+      (<%= e.comment %>)    
+    </li>
+  <% end %>
+</ol>

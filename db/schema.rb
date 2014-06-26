@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625221956) do
+ActiveRecord::Schema.define(version: 20140625230656) do
+
+  create_table "enquiries", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "comment"
+    t.integer  "listing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "enquiries", ["listing_id"], name: "index_enquiries_on_listing_id"
 
   create_table "listings", force: true do |t|
     t.string   "home_type"
