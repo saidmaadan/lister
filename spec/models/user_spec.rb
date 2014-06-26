@@ -8,7 +8,7 @@ RSpec.describe User, :type => :model do
 	  it "requires a name" do
 	    user = User.new(name: "")
 	    
-	    user.valid? # populates errors
+	    user.valid?
 
 	    expect(user.errors[:name].any?).to be_true
 	  end
@@ -22,7 +22,7 @@ RSpec.describe User, :type => :model do
 	  end
 
 	  it "accepts properly formatted email addresses" do
-	    emails = %w[user@example.com first.last@example.com]
+	    emails = %w[agent@example.com first.last@example.com]
 	    emails.each do |email|
 	      user = User.new(email: email)
 	      user.valid?
@@ -31,7 +31,7 @@ RSpec.describe User, :type => :model do
 	  end
 
 	  it "rejects improperly formatted email addresses" do
-	    emails = %w[@ user@ @example.com]
+	    emails = %w[@ agent@ @example.com]
 	    emails.each do |email|
 	      user = User.new(email: email)
 	      user.valid?
@@ -62,7 +62,7 @@ RSpec.describe User, :type => :model do
 	  end
 
 	  it "requires a password confirmation when a password is present" do
-	    user = User.new(password: "secret", password_confirmation: "")
+	    user = User.new(password: "hidden", password_confirmation: "")
 
 	    user.valid?
 
@@ -70,7 +70,7 @@ RSpec.describe User, :type => :model do
 	  end
 
 	  it "requires the password to match the password confirmation" do
-	    user = User.new(password: "secret", password_confirmation: "nomatch")
+	    user = User.new(password: "hidden", password_confirmation: "nomatch")
 
 	    user.valid?
 
@@ -78,7 +78,7 @@ RSpec.describe User, :type => :model do
 	  end
 
 	  it "requires a password and matching password confirmation when creating" do
-	    user = User.create!(user_attributes(password: "secret", password_confirmation: "secret"))
+	    user = User.create!(user_attributes(password: "hidden", password_confirmation: "hidden"))
 
 	    expect(user.valid?).to be_true
 	  end
@@ -92,7 +92,7 @@ RSpec.describe User, :type => :model do
 	  end
 
 	  it "automatically encrypts the password into the password_digest attribute" do
-	    user = User.new(password: "secret")
+	    user = User.new(password: "hidden")
 
 	    expect(user.password_digest).to be_present
 	  end

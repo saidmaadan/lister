@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  
+  get 'signup' => 'users#new'
+
 
   resources :users
-
+  
   root 'listings#index'
   resources :listings do 
     resources :enquiries
