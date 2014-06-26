@@ -108,7 +108,8 @@ describe "Viewing a user's profile page" do
   
   it "shows the user's details" do
     user = User.create!(user_attributes)
-                          
+    
+    sign_in(user)                      
     visit user_url(user)
     
     expect(page).to have_text(user.name)
@@ -273,6 +274,132 @@ end
 
 	  expect(page).to have_text('Invalid')
 	end
+
+	it "signs in the user if the email/password combination is valid" do
  
+	  expect(page).to have_link(user.name)
+	  expect(page).not_to have_link('Sign In')
+	  expect(page).not_to have_link('Sign Up')
+end
+
+	it "does not sign in the user if the email/password combination is invalid" do
+	  
+
+	  expect(page).not_to have_link(user.name)
+	  expect(page).to have_link('Sign In')
+	  expect(page).to have_link('Sign Up')
+	end
+
+	describe "Signing out" do
+
+	  it "removes the user id from the session" do
+	    user = User.create!(user_attributes)
+
+	    sign_in(user)
+
+	    click_link 'Sign Out'
+
+	    expect(page).to have_text("signed out")
+	    expect(page).not_to have_link('Sign Out')
+	    expect(page).to have_link('Sign In')
+	  end
+
+	  it "automatically signs out that user" do
+		  user = User.create!(user_attributes)
+
+		  sign_in(user)
+
+		  visit user_path(user)
+
+		  click_link 'Delete Account'
+
+		  expect(page).to have_link('Sign In')
+		  expect(page).not_to have_link('Sign Out')
+		end
+	end
+
+	describe UsersController do
+
+	  before do
+	    @user = User.create!(user_attributes)
+	  end
+
+	  context "when not signed in" do
+
+	    before do
+	      session[:user_id] = nil
+	    end
+
+	    it "cannot access index" do
+	      get :index
+
+	      expect(response).to redirect_to(new_session_url)
+	    end
+
+	    it "cannot access show" do
+	      get :show, id: @user
+
+	      expect(response).to redirect_to(new_session_url)
+	    end
+
+	    it "cannot access edit" do
+	      get :edit, id: @user
+
+	      expect(response).to redirect_to(new_session_url)
+	    end
+
+	    it "cannot access update" do
+	      patch :update, id: @user
+
+	      expect(response).to redirect_to(new_session_url)
+	    end
+
+	    it "cannot access destroy" do
+	      delete :destroy, id: @user
+
+	      expect(response).to redirect_to(new_session_url)
+	    end
+	  end
+	end
+
+	describe UsersController do
+
+	  before do
+	    @user = User.create!(user_attributes)
+	  end
+
+	  context "when not signed in" do
+	    ...
+	  end
+
+	  context "when signed in as the wrong user" do
+
+	    before do
+	      @wrong_user = User.create!(user_attributes(email: "wrong@example.com"))
+	      session[:user_id] = @wrong_user
+	    end
+
+	    it "cannot edit another user" do
+	      get :edit, id: @user
+
+	      expect(response).to redirect_to(root_url)
+	    end
+
+	    it "cannot update another user" do
+	      patch :update, id: @user
+
+	      expect(response).to redirect_to(root_url)
+	    end
+
+	    it "cannot destroy another user" do
+	      delete :destroy, id: @user
+
+	      expect(response).to redirect_to(root_url)
+	    end
+
+	  end
+
+	end
+	 
 end
 

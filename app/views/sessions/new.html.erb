@@ -7,7 +7,7 @@
     <ol>
       <li class="required">
         <%= label_tag :email %>
-        <%= email_field_tag :email,nil, required: true, autofocus: true, size: 40 %>
+        <%= text_field_tag :email,nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username" %>
       </li>
       <li class="required">
         <%= label_tag :password %>

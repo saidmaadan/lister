@@ -1,3 +1,10 @@
 <%# add navigation links to this file %>
-<%= link_to 'Sign Up', signup_path, class: 'right name' %>
-<%= link_to 'Sign In', signin_path, class: 'right name' %>
+<% if current_user %>
+
+      <%= link_to current_user.name, current_user, class: 'right name' %>
+      <%= link_to " Account Settings ", edit_user_path(current_user), class: 'name right' %> 
+      <%= link_to 'Sign Out ', session_path, method: :delete, class: 'name right' %> 
+    <% else %>
+      <%= link_to 'Sign Up', signup_path, class: 'right name' %>
+      <%= link_to 'Sign In', new_session_path, class: 'right name' %>
+    <% end %>
