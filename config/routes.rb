@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   get 'signup' => 'users#new'
 
-
+  resource :session
+  get "signin" => "sessions#new"
   resources :users
-  
+
   root 'listings#index'
   resources :listings do 
     resources :enquiries
