@@ -1,4 +1,6 @@
 class ListingsController < ApplicationController
+	before_action :require_signin, except: [:index, :show]
+    before_action :require_admin, only: [:destroy]
 	def index
 		@listings = Listing.all
 	end

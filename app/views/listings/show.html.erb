@@ -21,10 +21,16 @@
   </p>
 
     <nav>
+    <% if current_user %>
+    <%= link_to 'Add Listing', new_listing_path, class: 'button' %>
+    
       <%= link_to 'Edit', edit_listing_path(@listing), class: 'button' %>
+      <% end %>
+      <% if current_user_admin? %>
       <%= link_to 'Delete', @listing, 
                   class: 'button',
                   method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
     </nav>
   
 </article>
