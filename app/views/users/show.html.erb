@@ -13,10 +13,49 @@
   <%= @user.created_at.strftime("%B %Y") %>
 </p>
   </header>
+
+  <h3>Average Review</h3>
+  <p>
+    <%= format_average_stars(@user) %>
+  </p>
+  
+  <% if @user.reviews.any? %>
+    <h3>Reviews</h3>
+    <ol id="reviews">
+      <% @user.recent_reviews.each do |review| %>
+        <li>
+          <span class="review"><%= pluralize(review.stars, 'star') %></span>
+          <span class="user">by <%= link_to review.user.name, review.user %></span>
+          <span class="date">
+            <%= time_ago_in_words(review.created_at) %> ago
+          </span>
+          <p>
+            &quot;<%= review.comment %>&quot;
+          </p>
+        </li>      
+      <% end %>
+    </ol>
+    <% end %>
+
+
+     <% if @enquiries.any? %>
+  <h3>Enquiry For</h3>
+  <ul>
+    <% @enquiries.each do |e| %>
+      <li>
+        <%= link_to e.listing.title, e.listing %>
+        (<%= time_ago_in_words(e.created_at)%> ago)
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
   
   
     <nav>
     <%= link_to pluralize(@user.reviews.size, "Reviews"), user_reviews_path(@user) %>
+    <%= link_to "Write Review", new_user_review_path(@user), 
+             class: 'button ok review' %><br>
+...
     <% if current_user?(@user) %>
       <%= link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
       <% end %>

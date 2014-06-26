@@ -1,0 +1,29 @@
+
+<header>
+  <h1>New Review for <%= link_to(@user.name, @user) %></h1>
+</header>
+
+<%= form_for([@user, @review]) do |f| %>
+<%= render "shared/errors", object: @review %>
+  <fieldset>
+    
+     
+      <p class="required stars">
+        <%= f.label :stars, "Rating" %>         
+  <% Review::STARS.each do |star| %>
+    <span class="star">
+      <%= f.radio_button :stars, star %> <%= star %>
+      </span>
+  <% end %>   
+      </p>
+      <p class="required">
+        <%= f.label :comment %>
+        <%= f.text_area :comment, cols: 80, placeholder: "What did you think?" %>
+      </p>
+    
+    <p>
+      <%= f.submit 'Post Review', class: 'button' %> 
+      <%= link_to "Cancel", @user, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>

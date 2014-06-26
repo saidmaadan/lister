@@ -1,14 +1,14 @@
  <h1>Enquiries for <%= link_to @listing.title, @listing %></h1>
 </header>
 
-<ol>
-  <% @enquiries.each do |e| %>
-    <li>
-      <%= mail_to(e.email, e.name) %>
+
+  <% @enquiries.each do |enquiry| %>
+    <p>
+    <%= profile_image_for(enquiry.user, size: 35) %>
+     by <%= link_to enquiry.user.name, enquiry.user %>
       <span>
-        <%= time_ago_in_words(e.created_at) %> ago
+        <%= time_ago_in_words(enquiry.created_at) %> ago
       </span>
-      (<%= e.comment %>)    
-    </li>
+      <br><%= enquiry.comment %>   
+    </p>
   <% end %>
-</ol>

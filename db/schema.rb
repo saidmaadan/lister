@@ -11,15 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626190524) do
+ActiveRecord::Schema.define(version: 20140626231113) do
 
   create_table "enquiries", force: true do |t|
-    t.string   "name"
-    t.string   "email"
     t.text     "comment"
     t.integer  "listing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "enquiries", ["listing_id"], name: "index_enquiries_on_listing_id"
@@ -50,7 +49,6 @@ ActiveRecord::Schema.define(version: 20140626190524) do
   end
 
   create_table "reviews", force: true do |t|
-    t.string   "name"
     t.integer  "stars"
     t.text     "comment"
     t.integer  "user_id"

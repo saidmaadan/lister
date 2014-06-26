@@ -6,20 +6,12 @@
   <fieldset>
     <ol>
       <li class="required">
-        <%= f.label :name %>
-        <%= f.text_field :name, size: 40, autofocus: true %>
-      </li>
-      <li class="required">
-        <%= f.label :email %>
-        <%= f.text_field :email, size: 40 %>
-      </li>
-      <li class="required">
         <%= f.label :comment %>
         <%= f.text_area :comment%>
       </li>
     </ol>
     <p>
-      <%= f.submit %> 
+      <%= f.submit  'Make Enquiry' %> 
       <%= link_to "Cancel", @listing, class: 'button' %>
     </p
   </fieldset>

@@ -1,4 +1,5 @@
 class EnquiriesController < ApplicationController
+	before_action :require_signin
 	before_action :set_listing
 
 	def index
@@ -11,6 +12,7 @@ class EnquiriesController < ApplicationController
 
   def create
     @enquiry = @listing.enquiries.new(enquiry_params)
+    @enquiry.user = current_user
     if @enquiry.save
       redirect_to listing_enquiries_path(@listing),
         notice: "Thanks for making enquiry! I'll get back to you as soon as possible"
@@ -22,7 +24,7 @@ class EnquiriesController < ApplicationController
 private
 
   def enquiry_params
-    params.require(:enquiry).permit(:name, :email, :comment)
+    params.require(:enquiry).permit(:comment)
   end
 
   def set_listing
