@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :reviews
+  
 
   get 'signup' => 'users#new'
 
   resource :session
   get "signin" => "sessions#new"
-  resources :users
+  resources :users do 
+    resources :reviews
+  end
 
   root 'listings#index'
   resources :listings do 

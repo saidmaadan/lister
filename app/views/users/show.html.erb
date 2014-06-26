@@ -16,6 +16,7 @@
   
   
     <nav>
+    <%= link_to pluralize(@user.reviews.size, "Reviews"), user_reviews_path(@user) %>
     <% if current_user?(@user) %>
       <%= link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
       <% end %>
