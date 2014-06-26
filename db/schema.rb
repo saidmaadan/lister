@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625230656) do
+ActiveRecord::Schema.define(version: 20140626013513) do
 
   create_table "enquiries", force: true do |t|
     t.string   "name"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 20140625230656) do
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

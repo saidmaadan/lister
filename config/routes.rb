@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  resources :users
+
   root 'listings#index'
   resources :listings do 
     resources :enquiries

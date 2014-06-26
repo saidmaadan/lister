@@ -15,3 +15,12 @@ def enquiry_attributes(overrides = {})
     comment: "I like to no more about this property"     
   }.merge(overrides)
 end
+
+def user_attributes(overrides = {})
+  {
+    name: "Agent1",
+    email: "agent@example.com",
+    password: "hidden",
+    password_confirmation: "hidden"
+  }.merge(overrides)
+end
