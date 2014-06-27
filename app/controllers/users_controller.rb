@@ -13,6 +13,12 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@enquiries = @user.enquiries
 		@reviews = @user.reviews
+		@likers = @user.likers
+    # @liked = @user.liked
+		if current_user
+      @current_like = current_user.likes.find_by(user_id: @user.id)
+    end
+    
 	end
 
 	def new
@@ -29,8 +35,14 @@ class UsersController < ApplicationController
     end 
   end
 
+  def profile
+    @user = User.find(params[:id])
+  end
+
   def edit
   end
+
+  
   
   def update
     if @user.update(user_params)
@@ -50,7 +62,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :username, :avatar)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :username, :sex, :birthdate, :phone_number, :where_you_live, :info, :school, :work, :marital, :video,:avatar)
   end
 
   def require_correct_user

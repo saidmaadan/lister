@@ -1,15 +1,20 @@
 
 <%# navigation styled for Zurb Foundation 5 %>
-<nav class="top-bar" data-topbar>
+<!-- <div class="contain-to-grid sticky">
+<nav class="top-bar" data-topbar data-options="sticky_on: large" > -->
+<nav class="top-bar" data-topbar data-options="sticky_on: large" >
+
   <ul class="title-area">
     <li class="name">
-    <%= link_to 'Home', root_path %></li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+
+    <%= link_to 'Lister', root_path %></li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
   </ul>
   <div class="top-bar-section">
-    <ul>
+    <ul class='right'>
       <%= render 'layouts/navigation_links' %>
     </ul>
+  </div>
   </div>
 </nav>
 

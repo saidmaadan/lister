@@ -7,6 +7,7 @@ class ListingsController < ApplicationController
 
 	def show
 		@listing = Listing.find(params[:id])
+		@amenities = @listing.amenities
 	end
 
 	def edit
@@ -44,7 +45,7 @@ class ListingsController < ApplicationController
 	private
 
 	def listing_params
-		params.require(:listing).permit(:title, :summary, :accomodate, :address, :home_type, :pricing, :apartment_type, :amenities, :bedroom, :bathroom, :contact_name, :company_name, :phone, :website_url, :user_type, :info, :upload)
+		params.require(:listing).permit(:title, :summary, :accomodate, :address, :home_type, :pricing, :apartment_type, :bedroom, :bathroom, :contact_name, :company_name, :phone, :website_url, :user_type, :info, :upload, :amenity_ids => [])
 	end
 
 end

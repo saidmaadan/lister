@@ -13,6 +13,29 @@
   <%= @user.created_at.strftime("%B %Y") %>
 </p>
   </header>
+  <p>
+    <%= pluralize(@likers.count, 'like') %> 
+  </p>
+
+
+    <% if @current_like %>
+      <%= button_to "Unlike", user_like_path(@user, @current_like), method: :delete %>
+    <% else %>  
+      <%= button_to "Like", user_likes_path(@user) %>
+    <% end %>
+  
+  
+  <% if @likers.any? %>
+    <h3>Likers</h3>
+    <ul>
+      <% @likers.each do |user| %>
+        <li>
+          <%= link_to user.name, user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
 
   <h3>Average Review</h3>
   <p>

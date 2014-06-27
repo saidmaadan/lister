@@ -26,11 +26,6 @@
         <%= f.label :apartment_type %>
         <%= f.text_field :apartment_type, size: 30 %>
       </li>
-    
-      <li class="required">
-        <%= f.label :amenities %>
-        <%= f.text_field :amenities, size: 30 %>
-      </li>
       <li class="required">
         <%= f.label :bedroom %>
         <%= f.number_field :bedroom, size: 30 %>
@@ -67,7 +62,9 @@
         <%= f.label :upload %>
         <%= f.file_field :upload, size: 30 %>
       </li>
-      
+      <li class="required">
+        <%= f.collection_check_boxes(:amenity_ids, Amenity.all, :id, :name) %>
+      </li>
     </ol>
     <p>
       <%= f.submit %>

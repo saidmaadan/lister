@@ -23,4 +23,7 @@ class Listing < ActiveRecord::Base
 
   has_many :enquiries, dependent: :destroy
 
+  has_many :categorizations, dependent: :destroy
+  has_many :amenities, through: :categorizations
+
 end

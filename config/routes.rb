@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  
+
+  resources :amenities
+  resource :session
 
   get 'signup' => 'users#new'
 
-  resource :session
   get "signin" => "sessions#new"
+  get '/users/:id/profile' => 'users#profile'
   resources :users do 
     resources :reviews
+    resources :likes
   end
 
   root 'listings#index'

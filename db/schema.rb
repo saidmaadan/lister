@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626231113) do
+ActiveRecord::Schema.define(version: 20140627165000) do
+
+  create_table "amenities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorizations", force: true do |t|
+    t.integer  "listing_id"
+    t.integer  "amenity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categorizations", ["amenity_id"], name: "index_categorizations_on_amenity_id"
+  add_index "categorizations", ["listing_id"], name: "index_categorizations_on_listing_id"
 
   create_table "enquiries", force: true do |t|
     t.text     "comment"
@@ -23,6 +39,14 @@ ActiveRecord::Schema.define(version: 20140626231113) do
 
   add_index "enquiries", ["listing_id"], name: "index_enquiries_on_listing_id"
 
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
   create_table "listings", force: true do |t|
     t.string   "home_type"
     t.decimal  "accomodate"
@@ -31,7 +55,6 @@ ActiveRecord::Schema.define(version: 20140626231113) do
     t.string   "title"
     t.text     "summary"
     t.string   "apartment_type"
-    t.string   "amenities"
     t.decimal  "bedroom"
     t.decimal  "bathroom"
     t.string   "contact_name"
@@ -74,6 +97,15 @@ ActiveRecord::Schema.define(version: 20140626231113) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "admin",               default: false
+    t.string   "sex"
+    t.datetime "birthdate"
+    t.string   "phone_number"
+    t.string   "where_you_live"
+    t.text     "info"
+    t.string   "school"
+    t.string   "work"
+    t.string   "marital_status"
+    t.string   "video"
   end
 
 end

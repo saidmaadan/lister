@@ -20,6 +20,13 @@
     <%= @listing.address %>
   </p>
 
+ <h3>Listing Amenities</h3>
+    <ul>
+      <% @amenities.each do |a| %>
+        <li><%= a.name %></li>
+      <% end %>
+    </ul>
+  
   
   <%= link_to 'Make Enquiry', new_listing_enquiry_path(@listing), 
              class: 'button ok review' %><br>

@@ -1,0 +1,60 @@
+<header>
+  <h1>Profile</h1>
+</header>
+
+
+<%= form_for @user do |f| %>
+  <%= render "shared/errors", object: @user %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :sex %>
+        <%= f.text_field :sex, size: 40 %>
+      </li>
+      <li class="required">
+          <%= f.label :birthdate %>
+          <%= f.datetime_select :birthdate %>
+     </li>
+
+      <li class="required">
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :where_you_live %>
+        <%= f.text_field :where_you_live, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :marital_status %>
+        <%= f.text_field :marital_status, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :school %>
+        <%= f.text_field :school, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :work %>
+        <%= f.text_field :work, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :info, 'Describe Yourself' %>
+        <%= f.text_area :info, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :video %>
+        <%= f.text_field :video, size: 40 %>
+      </li>
+      
+    </ol>
+    <p>
+      
+    
+        <%= f.submit "Update Profile" %>
+     
+    </p>
+  </fieldset>
+<% end %>

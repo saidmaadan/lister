@@ -1,15 +1,22 @@
 <div class='row'>
-<ul>
-  <% @listings.each do |listing| %>
-    <li>
-      <article>
-        <header>
-        
-          <h2><%= link_to(listing.title, listing) %></h2>
-          <%= image_tag listing.upload.url %>
-          
-        </header>
-        <p>
+
+
+<% if @listings.any? %>
+  <div class="row">
+    <h1>Listing</h1>
+
+    <div id="player-wrapper"></div>
+
+    <% @listings.in_groups_of(4) do |group| %>
+      <div class="row">
+        <% group.each do |listing| %>
+          <% if listing %>
+            <div class="medium-3 columns">
+              <div class="listing_list">
+              <h2><%= link_to(listing.title, listing) %></h2>
+              
+                <iframe width="250" height="300" <%= image_tag listing.upload.url %>frameborder="0" allowfullscreen></iframe>
+                <p>
           <%= truncate(listing.summary, length: 150, separator: ' ') %>
         </p>
         <table>
@@ -22,8 +29,15 @@
             <td><%= format_price(listing) %></td>
           </tr>
         </table>
-      </article>
-    </li>
-  <% end %>
-</ul>
+
+                
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
 </div>
