@@ -1,8 +1,9 @@
+
 <article >
   <header>
     
     <h1><%= @listing.title %></h1>
-    <%= image_tag @listing.upload.url(:medium) %>
+    <%= image_tag @listing.upload.url(:large) %>
     
   </header>
   
@@ -19,6 +20,15 @@
   <p>
     <%= @listing.address %>
   </p>
+  <h3>Latitude</h3>
+  <p>
+    <%= @listing.latitude %>
+  </p>
+<h3>Longitude</h3>
+  <p>
+    <%= @listing.longitude %>
+  </p>
+
 
  <h3>Listing Amenities</h3>
     <ul>
@@ -45,5 +55,13 @@
                   method: :delete, data: { confirm: 'Are you sure?' } %>
                   <% end %>
     </nav>
+
+   <div style='width: 800px;'>
+    <div id="directions" style='width: 800px; height: 400px;'></div>
+  </div>
+    
+
+
+
   
 </article>

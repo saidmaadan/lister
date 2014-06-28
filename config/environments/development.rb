@@ -18,10 +18,10 @@ Rails.application.configure do
 #   }
 # }
 
-  CLIENT_ID = 109334
-  CLIENT_SECRET = "e48a1bf955"
-  USE_STAGE = true
-  WEPAY = WePay.new(CLIENT_ID, CLIENT_SECRET, USE_STAGE)
+  # CLIENT_ID = 109334
+  # CLIENT_SECRET = "e48a1bf955"
+  # USE_STAGE = true
+  # WEPAY = WePay.new(CLIENT_ID, CLIENT_SECRET, USE_STAGE)
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

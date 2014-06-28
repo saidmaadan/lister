@@ -30,6 +30,7 @@ gem 'aws-sdk'
 
 group :development do
 	gem 'rails_layout'
+	gem 'sunspot_solr'
 end
 
 group :test, :development do
@@ -40,12 +41,15 @@ group :test do
   gem "capybara"
 end
 gem 'font-awesome-sass'
-gem 'wepay'
+gem 'geocoder'
+gem 'gmaps4rails'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 # gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'sunspot_rails'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'

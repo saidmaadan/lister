@@ -1,8 +1,8 @@
 class Listing < ActiveRecord::Base
-	belongs_to :user
+	belongs_to :use
 
 	has_attached_file :upload, styles: {
-    :small => "200x200>", :medium => "300x300>",
+    :small => "200x200>", :medium => "350x300>",
     :large => "500x500>", :thumb => "100x100>"
   }, :default_url => "/:style/mks7.jpg"
 
@@ -26,5 +26,23 @@ class Listing < ActiveRecord::Base
 
   has_many :categorizations, dependent: :destroy
   has_many :amenities, through: :categorizations
+  
+  geocoded_by :address
+  after_validation :geocode
+  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+  geocoded_by :address, :latitude  => :lat, :longitude => :lon
+  reverse_geocoded_by :latitude, :longitude, :address => :location
+  geocoded_by :address, :lookup => :yandex
+  geocoded_by :address, :lookup => lambda{ |obj| obj.geocoder_lookup }
+
+def geocoder_lookup
+  if country_code == "RU"
+    :yandex
+  elsif country_code == "CN"
+    :baidu
+  else
+    :google
+  end
+end
 
 end

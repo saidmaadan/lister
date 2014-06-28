@@ -9,6 +9,17 @@ class ListingsController < ApplicationController
 	def show
 		@listing = Listing.find(params[:id])
 		@amenities = @listing.amenities
+		@hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
+		  marker.lat listing.latitude
+		  marker.lng listing.longitude
+		  marker.infowindow listing.address
+		  marker.picture({
+		  	'url' => 'https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png',
+		  	width => 32,
+		  	'height' => 32
+		  	})
+		  marker.json({address: listing.address})
+		end
 	end
 
 	def edit
@@ -47,7 +58,7 @@ class ListingsController < ApplicationController
 	private
 
 	def listing_params
-		params.require(:listing).permit(:title, :summary, :accomodate, :address, :home_type, :pricing, :apartment_type, :bedroom, :bathroom, :contact_name, :company_name, :phone, :website_url, :user_type, :info, :upload, :user_id, :amenity_ids => [])
+		params.require(:listing).permit(:title, :summary, :accomodate, :address, :home_type, :pricing, :apartment_type, :bedroom, :bathroom, :contact_name, :company_name, :phone, :website_url, :user_type, :info, :upload, :user_id, :latitude, :longitude, :amenity_ids => [])
 	end
 
 	def correct_user

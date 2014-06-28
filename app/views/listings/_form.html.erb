@@ -11,6 +11,14 @@
         <%= f.text_area :summary, cols: 40, rows: 7 %>
       </li>
       <li class="required">
+        <%= f.label :latitude %>
+        <%= f.text_field :latitude, size: 30 %>
+      </li>
+      <li class="required">
+        <%= f.label :longitude %>
+        <%= f.text_field :longitude, size: 30 %>
+      </li>
+      <li class="required">
         <%= f.label :address %>
         <%= f.text_field :address, size: 30 %>
       </li>

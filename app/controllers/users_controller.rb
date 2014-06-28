@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+    @is_admin = current_user && current_user.id == @user.id
 		@enquiries = @user.enquiries
 		@reviews = @user.reviews
 		@likers = @user.likers
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
     # session[:user_id] = nil
     redirect_to root_url, alert: "Account successfully deleted!"
   end
-  
+
 private
 
   def user_params
