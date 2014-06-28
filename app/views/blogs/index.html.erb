@@ -1,0 +1,26 @@
+<div class='row'>
+
+
+<% if @blogs.any? %>
+  <div class="row">
+    <h1>Blog</h1>
+
+    <% @blogs.in_groups_of(4) do |group| %>
+      <div class="row">
+        <% group.each do |blog| %>
+          <% if blog %>
+            <div class="medium-3 columns">
+              <div class="listing_list">
+              <h2><%= link_to(blog.title, blog) %></h2>
+              
+                <%= blog.content %>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+</div>

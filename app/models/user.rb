@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :listings, dependent: :destroy
+  has_many :blogs, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :enquiries, dependent: :destroy
   has_many :likes, dependent: :destroy

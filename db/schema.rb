@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627165000) do
+ActiveRecord::Schema.define(version: 20140628000456) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "blogs", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blogs", ["user_id", "created_at"], name: "index_blogs_on_user_id_and_created_at"
 
   create_table "categorizations", force: true do |t|
     t.integer  "listing_id"
@@ -50,7 +60,6 @@ ActiveRecord::Schema.define(version: 20140627165000) do
   create_table "listings", force: true do |t|
     t.string   "home_type"
     t.decimal  "accomodate"
-    t.datetime "address"
     t.decimal  "pricing"
     t.string   "title"
     t.text     "summary"
@@ -69,6 +78,8 @@ ActiveRecord::Schema.define(version: 20140627165000) do
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
+    t.integer  "user_id"
+    t.string   "address"
   end
 
   create_table "reviews", force: true do |t|

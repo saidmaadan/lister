@@ -1,7 +1,8 @@
 class Listing < ActiveRecord::Base
+	belongs_to :user
 
 	has_attached_file :upload, styles: {
-    :small => "200x150>", :medium => "300x200>",
+    :small => "200x200>", :medium => "300x300>",
     :large => "500x500>", :thumb => "100x100>"
   }, :default_url => "/:style/mks7.jpg"
 

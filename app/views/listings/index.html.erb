@@ -3,8 +3,7 @@
 
 <% if @listings.any? %>
   <div class="row">
-    <h1>Listing</h1>
-
+  <br>
     <div id="player-wrapper"></div>
 
     <% @listings.in_groups_of(4) do |group| %>
@@ -13,11 +12,12 @@
           <% if listing %>
             <div class="medium-3 columns">
               <div class="listing_list">
-              <h2><%= link_to(listing.title, listing) %></h2>
+              <h3><%= link_to(listing.title, listing) %></h3>
+              <%= image_tag listing.upload.url(:medium) %>
               
-                <iframe width="250" height="300" <%= image_tag listing.upload.url %>frameborder="0" allowfullscreen></iframe>
+                <!-- <iframe width="300" height="300" <%= image_tag listing.upload.url(:medium) %>frameborder="0" allowfullscreen></iframe> -->
                 <p>
-          <%= truncate(listing.summary, length: 150, separator: ' ') %>
+          <%= truncate(listing.summary, length: 80, separator: ' ') %>
         </p>
         <table>
           <tr>

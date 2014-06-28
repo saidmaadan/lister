@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
 	before_action :require_signin, except: [:index, :show]
-    before_action :require_admin, only: [:destroy]
+	before_action :correct_user, only: [:edit, :update, :destroy]
+    #before_action :require_admin, only: [:destroy]
 	def index
 		@listings = Listing.all
 	end
@@ -28,7 +29,8 @@ class ListingsController < ApplicationController
 	end
 
 	def create
-		@listing = Listing.new(listing_params)
+		@listing = current_user.listings.build(listing_params)
+		#@listing = Listing.new(listing_params)
 		if @listing.save
 			redirect_to @listing, notice: "Your listing successfully created"
 		else
@@ -45,7 +47,12 @@ class ListingsController < ApplicationController
 	private
 
 	def listing_params
-		params.require(:listing).permit(:title, :summary, :accomodate, :address, :home_type, :pricing, :apartment_type, :bedroom, :bathroom, :contact_name, :company_name, :phone, :website_url, :user_type, :info, :upload, :amenity_ids => [])
+		params.require(:listing).permit(:title, :summary, :accomodate, :address, :home_type, :pricing, :apartment_type, :bedroom, :bathroom, :contact_name, :company_name, :phone, :website_url, :user_type, :info, :upload, :user_id, :amenity_ids => [])
 	end
 
+	def correct_user
+  	unless @listing = current_user.listings.find_by(id: params[:id])
+  	redirect_to listings_url, alert: "Unauthorized access!"
+	end
+end
 end

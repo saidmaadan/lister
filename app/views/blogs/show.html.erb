@@ -1,0 +1,26 @@
+<header>
+    
+    <h1><%= @blog.title %></h1>
+    
+    
+  </header>
+  
+  <p>
+    <%= @blog.content %>
+  </p>
+
+  <nav>
+    
+
+    <% if current_user %>
+    <%= link_to 'Create New Post', new_blog_path, class: 'button' %>
+    <%# end %>
+    <%# if correct_user %>
+      <%= link_to 'Edit', edit_blog_path(@blog), class: 'button' %>
+      
+      
+      <%= link_to 'Delete', @blog, 
+                  class: 'button',
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
+    </nav>

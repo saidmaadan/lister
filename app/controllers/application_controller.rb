@@ -30,9 +30,15 @@ class ApplicationController < ActionController::Base
 	  end
 	end
 
-def current_user_admin?  
-  current_user && current_user.admin?
-end
+  # def correct_user
+  #   # current_user && correct_user
+  # end
 
-helper_method :current_user_admin?
-end
+   helper_method :correct_user
+
+  def current_user_admin?  
+    current_user && current_user.admin?
+  end
+
+  helper_method :current_user_admin?
+  end
