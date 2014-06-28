@@ -17,8 +17,43 @@
 
 .top-bar{
 	background: #A8CCED;
-	line-height: 60px;
+	line-height: 40px;
 }
+.top-bar .name {
+  font-size: rem-calc(13);
+  line-height: 45px;
+  }
+.top-bar .name a {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: white;
+  padding: 0 45px; }
+
+ .top-bar-section {
+  font-weight: bold;
+  font-size: 1.7em;
+  color: white;
+  padding: 0 25px;
+  background: #A8CCED; }
+
+  .top-bar-section li:not(.has-form) a:not(.button){
+  	background: #A8CCED;
+  	font-weight: normal;
+    font-size: 1em;
+
+  }
+
+  .top-bar-section li:not(.has-form) a:not(.button):hover{
+  	background: #A8CCED;
+
+  }
+.top-bar-section ul li{
+	background: #A8CCED;
+}
+.top-bar-section ul li:hover{
+	background: #A8CCED;
+}
+
 * {
 margin: 0;
 }
@@ -26,10 +61,12 @@ html, body {
 height: 100%;
 }
 main {
-min-height: 100%;
-height: auto !important;
-height: 100%;
-margin: 0 auto -4em;
+
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+	margin-top: 70px;
 }
 footer, .push {
 height: 4em;

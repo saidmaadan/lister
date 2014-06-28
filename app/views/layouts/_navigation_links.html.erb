@@ -1,19 +1,23 @@
 <%# add navigation links to this file %>
-<li class='active'> <%= link_to 'Blog', blogs_path %></li>
-
-<li class='has-dropdown active'>
+<li> <%= link_to 'Blog', blogs_path %></li>
 <% if current_user %>
-      <%= link_to current_user.name, current_user %>
+<li><%= link_to (current_user.name), current_user %></li>
+<li class='has-dropdown'>
+
+      <%= link_to 'Dashboard', current_user %>
       <ul class='dropdown'>
-        <li><%= link_to 'Add Listing', new_listing_path, class: 'active' %></li>
+        <li><%= link_to 'Add Listing', new_listing_path %></li>
+        <li><%= link_to 'Create Post', new_blog_path %></li>
     
-      <li><%# link_to 'Profile', profile_path(@user), 
+      <li><%= link_to 'Edit Profile', profile_path(current_user), 
                   class: 'active' %></li>
                  
-      <li><%= link_to " Account Settings ", edit_user_path(current_user), class: 'active' %></li> 
-      <li><%= link_to 'Sign Out ', session_path, method: :delete, class: 'active' %> </li></ul></li>
+      <li><%= link_to " Account", edit_user_path(current_user) %></li> 
+      <li><%= link_to 'Sign Out ', session_path, method: :delete %> </li></ul></li>
+  
     <% else %>
-     <li> <%= link_to 'Sign Up', signup_path, class: 'active' %></li>
-     <li> <%= link_to 'Sign In', new_session_path, class: 'active' %></li>
+     <li> <%= link_to 'Sign Up', signup_path %></li>
+     <li> <%= link_to 'Sign In', new_session_path %></li>
     <% end %>
+    <li><%= link_to 'List Your Space', new_listing_path, class: 'button [secondary alert success]' %></li>
 

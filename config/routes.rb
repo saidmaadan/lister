@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   resource :session
 
   get 'signup' => 'users#new'
-
   get "signin" => "sessions#new"
+  
   
   resources :users do 
     resources :reviews
     resources :likes
   end
-  get '/users/:id/profile' => 'users#profile'
+  get 'users/:id/profile' => 'users#profile', as: 'profile'
 
   root 'listings#index'
   resources :listings do 
