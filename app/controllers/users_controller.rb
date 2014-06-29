@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
+    @review = @user.reviews.new
 	end
 
 	def create

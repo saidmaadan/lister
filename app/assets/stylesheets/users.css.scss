@@ -1,3 +1,21 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "foundation";
+
+.user_main{
+	border: 2px solid #DAE0DE;
+	background: #FCFFFE;
+	margin-bottom: 40px;
+	border-radius: 5px;
+}
+.tabs{
+	border-bottom: 2px solid #DAE0DE;
+}
+
+.profile{
+	border: 2px solid #DAE0DE;
+	background: #FCFFFE;
+	margin-bottom: 40px;
+	border-radius: 5px;
+}

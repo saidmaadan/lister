@@ -1,51 +1,118 @@
 
-<article >
-  <header>
-    
-    <h1><%= @listing.title %></h1>
-    <%= image_tag @listing.upload.url(:large) %>
-    
-  </header>
-  
-  <p>
-    <%= @listing.summary %>
-  </p>
-  
-  <h3>Price</h3>
-  <p>
-    <%= format_price(@listing) %>
-  </p>
-  
-  <h3>Location</h3>
-  <p>
-    <%= @listing.address %>
-  </p>
-  <h3>Latitude</h3>
-  <p>
-    <%= @listing.latitude %>
-  </p>
-<h3>Longitude</h3>
-  <p>
-    <%= @listing.longitude %>
-  </p>
+<div class='row listing_main'>
 
-
- <h3>Listing Amenities</h3>
+<ul class="tabs" data-tab>
+  <li class="tab-title active"><a href="#panel2-1">Picture</a>
+   </li>
+  <li class="tab-title"><a href="#panel2-2">Map</a>
+  </li>
+  <li class="tab-title"><a href="#panel2-3">Amenities</a></li>
+  <li class="tab-title"><a href="#panel2-4">Details</a></li>
+  <li class='right title'><h3><%= @listing.title %></h3></li>
+</ul>
+<div class="medium-8 columns">
+<div class="tabs-content">
+  <div class="content active" id="panel2-1">
+  <%= image_tag @listing.upload.url(:large) %></div>
+   <div class="content active" id="panel2-2">
+     
+    <p id="directions" style='width: 600px; height: 400px;'></p></div>
+<div class="content active" id="panel2-3">
     <ul>
       <% @amenities.each do |a| %>
         <li><%= a.name %></li>
       <% end %>
     </ul>
-  
-  
-  <%= link_to 'Make Enquiry', new_listing_enquiry_path(@listing), 
-             class: 'button ok review' %><br>
-    <nav>
-    
+    </div>
+    <div class="content active" id="panel2-4">
+      <table class='info'>
+        <tr>
+          <th class='thead'>Apartment Type</th>
+            <td><%= @listing.apartment_type %></td>
+        </tr>
+         <tr>
+          <th>Bedroom</th>
+            <td><%= @listing.bedroom %></td>
+        </tr>
+         <tr>
+          <th>Bathroom</th>
+            <td><%= @listing.bathroom %></td>
+        </tr>
+         <tr>
+          <th>User Type</th>
+            <td><%= @listing.user_type %></td>
+        </tr>
+         <tr>
+          <th>Website Url</th>
+            <td><%= @listing.website_url %></td>
+        </tr>
+         <tr>
+          <th>Contact Name</th>
+            <td><%= @listing.contact_name %></td>
+        </tr>
+         <tr>
+          <th>Phone No</th>
+            <td><%= @listing.phone %></td>
+        </tr>
+        <tr>
+          <th>More Info</th>
+            <td><%= @listing.info %></td>
+        </tr>
 
-    <% if current_user %>
-    <%= link_to 'Add Listing', new_listing_path, class: 'button' %>
-    <% end %>
+      </table>
+    </div>
+</div>
+
+  <p>
+  <h3>Summary:</h3>
+    <%= @listing.summary %>
+  </p>
+
+</div>
+    
+<div class="medium-4 columns">
+  <div class='row'>
+    <div class="medium-12 columns">
+    <table class='price'>
+    <tr>
+      <th>Price</th> 
+    <td><%= format_price(@listing) %></td>
+  </tr>
+<tr>
+<td>
+  <%= link_to 'Make Enquiry', new_listing_enquiry_path(@listing), 
+             class: 'button right' %></td></tr>
+</table>
+
+      
+    </div>
+    <div class="medium-12 columns">
+      <table>
+        <tr>
+        <th>Location:</th>
+          <td><%= @listing.address %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="medium-12 columns">
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
+    </div>
+    <div class="medium-12 columns">
+      <table class='price'>
+        <tr>
+        <th>Latitude:</th>
+          <td><%= @listing.latitude %></td>
+        </tr>
+        <tr>
+        <th>Longitude:</th>
+          <td><%= @listing.longitude %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+<nav>
+    
     <% if current_user_admin? %>
       <%= link_to 'Edit', edit_listing_path(@listing), class: 'button' %>
       
@@ -56,17 +123,6 @@
                   <% end %>
     </nav>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %><br><br>
-
-
- <div style='width: 800px;'>
-    <div id="directions" style='width: 800px; height: 400px;'></div>
+ 
   </div>
-    
-  
-    
-
-
-
-  
-</article>
+</div>

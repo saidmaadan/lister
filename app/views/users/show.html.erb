@@ -1,17 +1,135 @@
-<article>
-  <header>
-	  <% if profile_image_for(@user).nil? %>
-	  <%= image_tag @user.avatar.url %>
-	  <% else %>
-    <%= profile_image_for(@user) %>
+<div class='row user_main'>
+
+<ul class="tabs vertical medium-4 columns" data-tab>
+<% if profile_image_for(@user).nil? %>
+    <%= image_tag @user.avatar.url %>
+    <% else %>
+    <%= profile_image_for@user, size: 250 %>
     <% end %>
-    
-    <h1><%= @user.name %></h1>
+  <li class="tab-title active"><a href="#panel1a">Info</a></li>
+  <li class="tab-title"><a href="#panel2a">Video</a></li>
+  <li class="tab-title"><a href="#panel3a">Acoount Setting</a></li>
+  <li class="tab-title"><a href="#panel4a">Edit Profile</a></li>
+   <%# if current_user?(@user) %>
+      <%# link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
+      <%# end %>
+      <%# if current_user_admin? %>
+      
+</ul>
+
+<div class="tabs-content vertical medium-8 columns">
+
+  <div class="content active" id="panel1a">
+  <h1><%= @user.name %></h1>
     <h2><%= mail_to(@user.email) %></h2>
     <h3>Member Since</h3>
 <p>
   <%= @user.created_at.strftime("%B %Y") %>
 </p>
+   
+  </div>
+   <div class="content" id="panel2a">
+    <p><iframe width="750" height="450" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="content" id="panel3a">
+    <p><%= form_for(@user) do |f| %>
+  <%= render "shared/errors", object: @user %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :name %>
+        <%= f.text_field :name, size: 40, autofocus: true %>
+      </li>
+      <li class="required">
+          <%= f.label :username %>
+          <%= f.text_field :username, size: 40, 
+                    placeholder: "Alphanumeric characters only!" %>
+     </li>
+
+      <li class="required">
+        <%= f.label :email %>
+        <%= f.email_field :email, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :password %>
+        <%= f.password_field :password, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, size: 40 %>
+      </li>
+    </ol>
+    <p>
+      
+    
+        <%= f.submit "Update Account" %>
+     
+    </p>
+  </fieldset>
+<% end %></p>
+  </div>
+  <div class="content" id="panel4a">
+    <p> <p><%= form_for(@user) do |f| %>
+  <%= render "shared/errors", object: @user %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :sex %>
+        <%= f.text_field :sex, size: 40 %>
+      </li>
+      <li class="required">
+          <%= f.label :birthdate %>
+          <%= f.datetime_select :birthdate %>
+     </li>
+
+      <li class="required">
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :where_you_live %>
+        <%= f.text_field :where_you_live, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :marital_status %>
+        <%= f.text_field :marital_status, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :school %>
+        <%= f.text_field :school, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :work %>
+        <%= f.text_field :work, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :info, 'Describe Yourself' %>
+        <%= f.text_area :info, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :video %>
+        <%= f.text_field :video, size: 40 %>
+      </li>
+      
+    </ol>
+    <p>
+      
+    
+        <%= f.submit "Update Profile" %>
+     
+    </p>
+  </fieldset>
+<% end %></p></p>
+  </div>
+</div>
+
+ 
+    
   </header>
   <p>
     <%= pluralize(@likers.count, 'like') %> 
@@ -19,9 +137,9 @@
 
 
     <% if @current_like %>
-      <%= button_to "Unlike", user_like_path(@user, @current_like), method: :delete %>
+      <%= button_to "Unlike", user_like_path(@user, @current_like), method: :delete, class: 'button disable' %>
     <% else %>  
-      <%= button_to "Like", user_likes_path(@user) %>
+      <%= button_to "Like", user_likes_path(@user), class: 'button' %>
     <% end %>
   
   
@@ -55,9 +173,12 @@
           <p>
             &quot;<%= review.comment %>&quot;
           </p>
-        </li>      
+        </li> 
+
       <% end %>
     </ol>
+    <% else %>
+        <p>You have no reviev now</p>     
     <% end %>
 
 
@@ -79,15 +200,8 @@
     <%= link_to "Write Review", new_user_review_path(@user), 
              class: 'button ok review' %><br>
 ...
-    <% if current_user?(@user) %>
-      <%= link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
-      <% end %>
-      <% if current_user_admin? %>
-      <%= link_to 'Delete Account', @user, 
-                  method: :delete, 
-                  data: { confirm: 'Are you sure you want to permanently delete your account?' },
-                  class: 'button' %>
-                  <% end %>
+   
     </nav>
   
-</article>
+</div>
+</div>

@@ -1,12 +1,28 @@
 
+<div class='home_image'> <br><br><br><br>
+<div class="row search_home">
+    <div class="large-10 large-centered columns form_search">
+     <%= form_tag listings_path, method: :get do %>
+      <div class="row collapse">
+        <div class="small-10 columns">
+        <%= text_field_tag :query, params[:query], placeholder: "Check out for a place to stay." %>
+          
+        </div>
+        <div class="small-2 columns">
+        <%= submit_tag "Search for Home", name: nil, class: "button postfix" %>
+        </div>
+         <label class='looking'>What are you looking for?</label>
+      <input type="radio" name="room" value="room" id="pokemonRed"><label for="room">I'm looking for a Room</label>
+      <input type="radio" name="room" value="home" id="pokemonBlue"><label for="roomhome">I'm looking for an entire home</label>
+    
+      </div><% end %>
+    </div></div>
+    
+
+</div>
+<div class='wrap'>
 <div class='row'>
 
-<%= form_tag listings_path, method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
-<% end %>
 
 <% if @listings.any? %>
   <div class="row">
@@ -19,21 +35,24 @@
           <% if listing %>
             <div class="medium-3 columns">
               <div class="listing_list">
-              <h3><%= link_to(listing.title, listing) %></h3>
+              
               <%= image_tag listing.upload.url(:medium) %>
               
                 <!-- <iframe width="300" height="300" <%= image_tag listing.upload.url %>frameborder="0" allowfullscreen></iframe> -->
                 <p>
-          <%= truncate(listing.summary, length: 80, separator: ' ') %>
+          <%# truncate(listing.summary, length: 80, separator: ' ') %>
+          
         </p>
         <table>
+        <tr><td>
+        <h5><%= link_to(listing.title, listing) %></h5></td></tr>
           <tr>
-            <th>Location</th>
+            <!-- <th>Location</th> -->
             <td><%= listing.address %></td>
           </tr>
           <tr>
-            <th>Price</th>
-            <td><%= format_price(listing) %></td>
+             <!-- <th>Price</th> -->
+            <td class='button [tiny small large]'><%= format_price (listing) %></td>
           </tr>
         </table>
 
@@ -49,6 +68,6 @@
         <% end %>
       </div>
     <% end %>
-
+</div>
     
 </div>
