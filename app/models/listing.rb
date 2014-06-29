@@ -1,5 +1,10 @@
 class Listing < ActiveRecord::Base
-	belongs_to :use
+	belongs_to :user
+
+   # Tire::Model::Search
+   # Tire::Model::Callbacks
+
+
 
 	has_attached_file :upload, styles: {
     :small => "200x200>", :medium => "350x300>",
@@ -28,21 +33,16 @@ class Listing < ActiveRecord::Base
   has_many :amenities, through: :categorizations
   
   geocoded_by :address
-  after_validation :geocode
-  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
-  geocoded_by :address, :latitude  => :lat, :longitude => :lon
-  reverse_geocoded_by :latitude, :longitude, :address => :location
-  geocoded_by :address, :lookup => :yandex
-  geocoded_by :address, :lookup => lambda{ |obj| obj.geocoder_lookup }
+  after_validation :geocode, :if => :address_changed?
+  
+#   def self.search(params)
+#   tire.search(load: true) do
+#     query { string params[:query], default_operator: "AND" } if params[:query].present?
+#     filter :range, published_at: {lte: Time.zone.now}
+#   end
+# end
 
-def geocoder_lookup
-  if country_code == "RU"
-    :yandex
-  elsif country_code == "CN"
-    :baidu
-  else
-    :google
+  def self.recently_added
+    order('created_at desc')
   end
-end
-
 end

@@ -1,12 +1,4 @@
-
 <div class='row'>
-
-<%= form_tag listings_path, method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
-<% end %>
 
 <% if @listings.any? %>
   <div class="row">

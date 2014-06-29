@@ -13,11 +13,14 @@ Rails.application.routes.draw do
     resources :likes
   end
   get 'users/:id/profile' => 'users#profile', as: 'profile'
+  get '/listings/list' => 'listings#list'
 
   root 'listings#index'
   resources :listings do 
     resources :enquiries
   end
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

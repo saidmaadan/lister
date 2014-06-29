@@ -1,10 +1,21 @@
 class ListingsController < ApplicationController
 	before_action :require_signin, except: [:index, :show]
-	before_action :correct_user, only: [:edit, :update, :destroy]
-    #before_action :require_admin, only: [:destroy]
+	before_action :correct_user, only: [:edit, :update]
+  #before_action :require_admin, only: [:destroy]
+
+
 	def index
-		@listings = Listing.all
+		@listings = Listing.recently_added.limit(4)
 	end
+
+	def list
+		if params[:search].present?
+	    @listings = Listing.near(params[:search], 50, :order => :distance)
+	  else
+			@listings = Listing.recently_added
+		  end
+	end
+	
 
 	def show
 		@listing = Listing.find(params[:id])

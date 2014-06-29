@@ -30,7 +30,7 @@ gem 'aws-sdk'
 
 group :development do
 	gem 'rails_layout'
-	gem 'sunspot_solr'
+	#gem 'sunspot_solr'
 end
 
 group :test, :development do
@@ -49,8 +49,11 @@ gem 'gmaps4rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'sunspot_rails'
-
-
+group :development do
+   gem 'sunspot_solr'
+ end
+gem 'nifty-generators'
+#gem 'tire'
 # Use unicorn as the app server
 # gem 'unicorn'
 
