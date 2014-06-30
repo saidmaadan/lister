@@ -1,5 +1,5 @@
 <%# add navigation links to this file %>
-<li><%= link_to 'All Listings', listings_list_path %></li>
+
 <li> <%= link_to 'Blog', blogs_path %></li>
 <% if current_user %>
 <li><%= link_to (current_user.name), current_user %></li>
@@ -13,10 +13,10 @@
         <li><%= link_to 'Create Post', new_blog_path %></li>
 
     
-      <%# link_to 'Edit Profile', profile_path(current_user), 
-                  class: 'active' %>
+      <li><%= link_to 'Edit Profile', profile_path(current_user)
+                   %></li>
                  
-      <li><%= link_to " Account", edit_user_path(current_user) %></li> 
+      <%# link_to " Account", edit_user_path(current_user) %>
       <li><%= link_to 'Sign Out ', session_path, method: :delete %> </li>
       <% if current_user_admin? %>
       <li><%= link_to 'Delete Account', @user, 
@@ -26,10 +26,33 @@
   
     <% else %>
      <li> <%= link_to 'Sign Up', signup_path %></li>
-     <li> <%= link_to 'Sign In', new_session_path %></li>
+     <li> <%# link_to 'Sign In', new_session_path %></li>
+
+   <li> <a href="#" data-reveal-id="myModal">Sign In</a>
+
+<div id="myModal" class="reveal-modal" data-reveal>
+  <h3>Sign In</h3>
+  <p class="lead">
+<%= form_tag(session_path) do %>
+  <fieldset>
+      <p>
+        <%= label_tag :email %>
+        <%= text_field_tag :email,nil, required: true, autofocus: true, size: 20, placeholder: "Email or Username" %>
+       </p>
+       <p>
+        <%= label_tag :password %>
+        <%= password_field_tag :password, nil, required: true, size: 20 %>
+      </p>
+    <p>
+      <%= submit_tag 'Sign In', class: 'button' %>
+    </p>
+    No account yet? <%= link_to 'Sign up!', signup_path %>
+</p>
+  </fieldset></p>
+  <a class="close-reveal-modal">&#215;</a><% end %>
+</div></li>
     <% end %>
     <li><%= link_to 'List Your Space', new_listing_path, class: 'button [secondary alert success]' %></li>
-    
 
 
 

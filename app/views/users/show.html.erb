@@ -1,4 +1,21 @@
+
+<div class='row'>
+<div class='small-8 large-centered columns'>
+
+<dl class="sub-nav">
+  <dt>Filter:</dt>
+  <dd class="active"><%= link_to 'Dashboard', current_user %></dd>
+  <dd><%= link_to 'Profile', profile_path(current_user)
+                   %></dd>
+  <dd><%= link_to 'Add Listings', new_listing_path %></dd>
+  <dd><%= link_to 'Create Post', new_blog_path %></dd>
+  <dd><%= link_to 'All Listings', listings_list_path %></dd>
+</dl>
+</div></div>
 <div class='row user_main'>
+<br>
+
+
 
 <ul class="tabs vertical medium-4 columns" data-tab>
 <% if profile_image_for(@user).nil? %>
@@ -10,6 +27,8 @@
   <li class="tab-title"><a href="#panel2a">Video</a></li>
   <li class="tab-title"><a href="#panel3a">Acoount Setting</a></li>
   <li class="tab-title"><a href="#panel4a">Edit Profile</a></li>
+   <li class="tab-title"><a href="#panel5a">Review & Enquiry</a></li>
+    <li class="tab-title"><a href="#panel6a">Picture</a></li>
    <%# if current_user?(@user) %>
       <%# link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
       <%# end %>
@@ -20,13 +39,73 @@
 <div class="tabs-content vertical medium-8 columns">
 
   <div class="content active" id="panel1a">
-  <h1><%= @user.name %></h1>
-    <h2><%= mail_to(@user.email) %></h2>
-    <h3>Member Since</h3>
-<p>
-  <%= @user.created_at.strftime("%B %Y") %>
-</p>
-   
+  <div class='row'>
+  <div class='medium-9 columns'>
+  
+<table class='user_profile'>
+  <tr>
+  <th></th>
+    <td><h3><%= @user.name %></h3></td>
+  </tr>
+  <tr>
+    <th>Email:</th>
+    <td><%= mail_to(@user.email) %></td>
+  </tr>
+  <tr>
+    <th><h4>Member Since</h4></th>
+    <td><%= @user.created_at.strftime("%B %Y") %></td>
+  </tr>
+  <tr>
+    <th>Phone No:</th>
+    <td><%= @user.phone_number %></td>
+  </tr>
+  <tr>
+    <th>School Attended</th>
+    <td><%= @user.school %></td>
+  </tr>
+  <tr>
+    <th>Professional</th>
+    <td><%= @user.work %></td>
+  </tr>
+  <tr>
+    <th>Work Place</th>
+    <td><%= @user.work %></td>
+  </tr>
+  <tr>
+    <th>Your Location</th>
+    <td><%= @user.where_you_live %></td>
+  </tr>
+  <tr>
+    <th>About</th>
+    <td><%= @user.info %></td>
+  </tr>
+</table>
+</div><br><br>
+<div class='medium-3 columns'>
+   <p>
+    <%= pluralize(@likers.count, 'like') %> 
+  </p>
+
+
+    <% if @current_like %>
+      <%= button_to "Unlike", user_like_path(@user, @current_like), method: :delete, class: 'button disable' %>
+    <% else %>  
+      <%= button_to "Like", user_likes_path(@user), class: 'button' %>
+    <% end %>
+  
+  
+  <% if @likers.any? %>
+    <h3>Likers</h3>
+    <ul>
+      <% @likers.each do |user| %>
+        <li>
+          <%= link_to user.name, user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+   </div>
   </div>
    <div class="content" id="panel2a">
     <p><iframe width="750" height="450" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
@@ -73,50 +152,50 @@
     <p> <p><%= form_for(@user) do |f| %>
   <%= render "shared/errors", object: @user %>
   <fieldset>
-    <ol>
-      <li class="required">
+    
+      <p>
         <%= f.label :sex %>
         <%= f.text_field :sex, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p>
           <%= f.label :birthdate %>
           <%= f.datetime_select :birthdate %>
-     </li>
+     </p>
 
-      <li class="required">
+      <p>
         <%= f.label :phone_number %>
         <%= f.text_field :phone_number, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p>
         <%= f.label :where_you_live %>
         <%= f.text_field :where_you_live, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p>
         <%= f.label :marital_status %>
         <%= f.text_field :marital_status, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p>
         <%= f.label :school %>
         <%= f.text_field :school, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p>
         <%= f.label :work %>
         <%= f.text_field :work, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p>
         <%= f.label :info, 'Describe Yourself' %>
         <%= f.text_area :info, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p>
         <%= f.label :avatar %>
         <%= f.file_field :avatar, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p>
         <%= f.label :video %>
         <%= f.text_field :video, size: 40 %>
-      </li>
+      </p>
       
-    </ol>
+  
     <p>
       
     
@@ -126,45 +205,19 @@
   </fieldset>
 <% end %></p></p>
   </div>
-</div>
-
- 
-    
-  </header>
-  <p>
-    <%= pluralize(@likers.count, 'like') %> 
-  </p>
-
-
-    <% if @current_like %>
-      <%= button_to "Unlike", user_like_path(@user, @current_like), method: :delete, class: 'button disable' %>
-    <% else %>  
-      <%= button_to "Like", user_likes_path(@user), class: 'button' %>
-    <% end %>
-  
-  
-  <% if @likers.any? %>
-    <h3>Likers</h3>
-    <ul>
-      <% @likers.each do |user| %>
-        <li>
-          <%= link_to user.name, user %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-
-
-  <h3>Average Review</h3>
+   <div class="content active" id="panel5a">
+  <div class='row'>
+    <div class='medium-6 columns'>
+      <h3>Average Review</h3>
   <p>
     <%= format_average_stars(@user) %>
   </p>
   
   <% if @user.reviews.any? %>
     <h3>Reviews</h3>
-    <ol id="reviews">
+    
       <% @user.recent_reviews.each do |review| %>
-        <li>
+        <p>
           <span class="review"><%= pluralize(review.stars, 'star') %></span>
           <span class="user">by <%= link_to review.user.name, review.user %></span>
           <span class="date">
@@ -173,16 +226,15 @@
           <p>
             &quot;<%= review.comment %>&quot;
           </p>
-        </li> 
+        </p> 
 
       <% end %>
-    </ol>
     <% else %>
         <p>You have no reviev now</p>     
     <% end %>
-
-
-     <% if @enquiries.any? %>
+    </div>
+    <div class='medium-6 columns'>
+       <% if @enquiries.any? %>
   <h3>Enquiry For</h3>
   <ul>
     <% @enquiries.each do |e| %>
@@ -196,12 +248,14 @@
   
   
     <nav>
-    <%= link_to pluralize(@user.reviews.size, "Reviews"), user_reviews_path(@user) %>
+    <%= link_to pluralize(@user.reviews.size, "Reviews"), user_reviews_path(@user) %><br><br>
     <%= link_to "Write Review", new_user_review_path(@user), 
              class: 'button ok review' %><br>
-...
    
     </nav>
-  
-</div>
-</div>
+    </div>
+  </div></div>
+    <div class="content" id="panel6a"><%= image_tag @user.avatar.url(:large), size: 500, class: 'right' %></div>
+    <!-- <div class="content" id="panel6a"></div>
+    <div class="content" id="panel6a"></div> -->
+  </div></div><br><br>

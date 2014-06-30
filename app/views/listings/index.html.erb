@@ -1,5 +1,5 @@
 
-<div class='home_image'> <br><br><br><br>
+<div class='home_image'> <br><br><br><br><br><br><br><br>
 <div class="row search_home">
     <div class="large-10 large-centered columns form_search">
      <%= form_tag listings_path, method: :get do %>
@@ -21,6 +21,12 @@
 
 </div>
 <div class='wrap'>
+<div class='row'>
+  <div class="large-6 large-centered columns">
+    <h3>Browse Apartments for Rent</h3>
+    <h6>Not sure where to stay? See all available listings in your area.</h6>
+  </div>
+</div>
 <div class='row'>
 
 
@@ -51,8 +57,8 @@
             <td><%= listing.address %></td>
           </tr>
           <tr>
-             <!-- <th>Price</th> -->
-            <td class='button [tiny small large]'><%= format_price (listing) %></td>
+             <!-- <th><h3>Price</h3></th> -->
+            <td class='button [tiny small large] right'><%= format_price (listing) %></td>
           </tr>
         </table>
 

@@ -1,7 +1,6 @@
-
-<header>
+<div class='row'>
+<div class='small-10 large-centered columns'>
   <h1>New Review for <%= link_to(@user.name, @user) %></h1>
-</header>
 
 <%= form_for([@user, @review]) do |f| %>
 <%= render "shared/errors", object: @review %>
@@ -9,7 +8,7 @@
     
      
       <p class="required stars">
-        <%= f.label :stars, "Rating" %>         
+        <%= f.label :stars, "Rating" %>       
   <% Review::STARS.each do |star| %>
     <span class="star">
       <%= f.radio_button :stars, star %> <%= star %>
@@ -27,3 +26,4 @@
     </p>
   </fieldset>
 <% end %>
+</div></div>

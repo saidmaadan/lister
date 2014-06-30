@@ -1,21 +1,21 @@
-<header>
-  <h1>Sign In</h1>
-</header>
+<div class="row">
+<div class="small-7 large-centered columns">
 
+  <h3>Sign In</h3>
 <%= form_tag(session_path) do %>
   <fieldset>
-    <ol>
-      <li class="required">
+      <p>
         <%= label_tag :email %>
         <%= text_field_tag :email,nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username" %>
-      </li>
-      <li class="required">
+       </p>
+       <p>
         <%= label_tag :password %>
         <%= password_field_tag :password, nil, required: true, size: 40 %>
-      </li>
-    </ol>
+      </p>
     <p>
-      <%= submit_tag 'Sign In' %>
+      <%= submit_tag 'Sign In', class: 'button' %>
     </p>
+    No account yet? <%= link_to 'Sign up!', signup_path %>
+</p>
   </fieldset>
-<% end %>
+<% end %></div></div>

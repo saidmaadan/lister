@@ -75,10 +75,15 @@
     <div class="medium-12 columns">
     <table class='price'>
     <tr>
-      <th>Price</th> 
-    <td><%= format_price(@listing) %></td>
+      <!-- <th><h4>Price</h4></th>  -->
+    <td><h4><%= format_price(@listing) %></h4></td>
   </tr>
+  <tr>
+<th>  </th> 
+<td></td>
+<td>
 <tr>
+<!-- <th>  </th>  -->
 <td>
   <%= link_to 'Make Enquiry', new_listing_enquiry_path(@listing), 
              class: 'button right' %></td></tr>

@@ -1,82 +1,97 @@
+<div class='row'><br>
 <%= form_for @listing, :html => {:multipart => true} do |f| %>
   <%= render "shared/errors", object: @listing %>
-  <fieldset>
-    <ol>
-      <li class="required">
-        <%= f.label :title %>
-        <%= f.text_field :title, autofocus: true %>
-      </li>
-      <li class="required">
-        <%= f.label :summary %>
-        <%= f.text_area :summary, cols: 40, rows: 7 %>
-      </li>
-      <li class="required">
-        <%= f.label :latitude %>
-        <%= f.text_field :latitude, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :longitude %>
-        <%= f.text_field :longitude, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :address %>
-        <%= f.text_field :address, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :pricing %>
-        <%= f.number_field :pricing, size: 12 %>
-      </li>
-      <li class="required">
-        <%= f.label :accomodate %>
-        <%= f.text_field :accomodate, size: 30 %>
-      </li>
-     <li>
-        <%= f.label :apartment_type %>
-        <%= f.text_field :apartment_type  %>
-      </li>
-      <li class="required">
-        <%= f.label :bedroom %>
-        <%= f.number_field :bedroom, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :bathroom %>
-        <%= f.number_field :bathroom, size: 30 %>
-      </li>
-      <li>
-        <%= f.label :contact_name %>
-        <%= f.text_field :contact_name, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :company_name %>
-        <%= f.text_field :company_name, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :phone %>
-        <%= f.text_field :phone, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :website_url %>
-        <%= f.text_field :website_url, size: 30 %>
-      </li>
-      <li>
-        <%= f.label :user_type %>
-         <%= f.text_field :user_type %>
-      </li>
-      <li class="required">
-        <%= f.label :info, 'More Info' %>
-        <%= f.text_field :info, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.label :upload %>
-        <%= f.file_field :upload, size: 30 %>
-      </li>
-      <li class="required">
-        <%= f.collection_check_boxes(:amenity_ids, Amenity.all, :id, :name) %>
-      </li>
-    </ol>
-    <p>
-      <%= f.submit %>
-      <%= link_to "Cancel", listings_list_path, class: 'button' %>
-    </p>
-  </fieldset>
+ 
+  <div class='row'>
+  <!-- <div id='listiing_title'> -->
+  <div class="small-8 large-centered columns listiing_title"><br><br><br>
+  <div class='medium-6 columns'>
+    <%= f.text_field :title, autofocus: true, placeholder: 'Title' %>
+  </div>
+  <div class='medium-6 columns'>
+    <%= f.number_field :pricing, size: 12, placeholder: 'Price'  %>
+  </div></div><!-- </div> -->
+  
+  </div><br><br>
+  <div class='row'>
+  <div class="small-10 large-centered columns listiing_title1"><br><h5>Home Type</h5><br>
+  <div class='medium-6 columns'>
+    <%= f.text_field :apartment_type, placeholder: 'Apartment Type'  %>
+  </div>
+  <div class='medium-6 columns'>
+    <%= f.text_field :accomodate, size: 30, placeholder: 'Accomodate' %>
+  </div>
+  </div>
+  </div><br><br>
+  <div class='row'>
+  <div class="small-10 large-centered columns listiing_title2"><br><h5>Room Type</h5><br>
+  <div class='medium-6 columns'>
+    <%= f.number_field :bedroom, size: 30, placeholder: 'Number of Bedroom' %>
+  </div>
+  <div class='medium-6 columns'>
+    <%= f.number_field :bathroom, size: 30, placeholder: 'Number of Bathroom' %>
+  </div>
+  </div>
+  </div><br><br>
+  <div class='row'>
+  <div class="small-11 large-centered columns listiing_title3"><br><h5>Property Info</h5><br>
+  <div class='medium-7 columns'>
+    <%= f.text_area :summary, cols: 40, rows: 8, placeholder: 'Description: Minimum of 40 characters ' %>
+  </div>
+  <div class='medium-5 columns'>
+    <div class='row'>
+  <div class='medium-12 columns'>
+    <%= f.text_field :address, size: 30, placeholder: 'Property Location' %>
+  </div>
+  <div class='medium-12 columns'>
+    <%= f.text_field :latitude, size: 30, placeholder: "Latitude" %>
+  </div>
+  <div class='medium-12 columns'>
+    <%= f.text_field :longitude, size: 30, placeholder: 'Longitude' %>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div><br><br>
+  <div class='row'>
+  <div class="small-11 large-centered columns listiing_title5"><br><h5>Contact Person</h5><br>
+  <div class='medium-4 columns'>
+    <%= f.text_field :phone, size: 30, placeholder: "Phone Number" %>
+  </div>
+  <div class='medium-4 columns'>
+    <%= f.text_field :contact_name, size: 30, placeholder: "Contact Name" %>
+  </div>
+  <div class='medium-4 columns'>
+    <%= f.text_field :company_name, size: 30, placeholder: "Company Name" %>
+  </div>
+  </div><br><br>
+   <div class='row'>
+   <div class="small-8 large-centered columns listiing_title6"><br><br><br>
+  <div class='medium-6 columns'>
+    <%= f.text_field :website_url, size: 30, placeholder: "Website URL" %>
+  </div>
+  <div class='medium-6 columns'>
+    <%= f.text_field :user_type, placeholder: "User Type" %>
+  </div></div><br><br>
+  
+  <div class='row'>
+  <div class="small-8 large-centered columns listiing_title7"><br><br><br>
+  <div class='medium-8 columns'>
+    <%= f.text_field :info, size: 30, placeholder: 'More Info' %>
+  </div>
+  <div class='medium-4 columns'>
+    <%= f.file_field :upload, size: 30 %>
+  </div></div><br><br>
+  <div class='row'>
+  <div class="small-10 large-centered columns listiing_title8"><br><h5>Amenities</h5><br>
+  <%= f.collection_check_boxes(:amenity_ids, Amenity.all, :id, :name) %>
+  </div></div><br><br>
+  <div class='row'>
+  <div class="small-5 large-centered columns">
+      <%= f.submit class: 'button' %>
+      <%= link_to "Cancel", listings_list_path, class: 'button disabled' %>
+    </p></div></div>
+  
 <% end %>
+</div><br><br>

@@ -1,14 +1,22 @@
- <h1>Enquiries for <%= link_to @listing.title, @listing %></h1>
-</header>
+<div class='row'>
+<div class='small-8 large-centered columns'>
+ <h2>Enquiries for <%= link_to @listing.title, @listing %></h2>
+
 
 
   <% @enquiries.each do |enquiry| %>
+  
     <p>
-    <%= profile_image_for(enquiry.user, size: 35) %>
+    <div class='medium-4 columns'>
+    <%= profile_image_for(enquiry.user, size: 100) %><br><br>
      by <%= link_to enquiry.user.name, enquiry.user %>
-      <span>
+      <span><br>
         <%= time_ago_in_words(enquiry.created_at) %> ago
-      </span>
-      <br><%= enquiry.comment %>   
+      </span></div>
+      <div class='medium-8 columns'>
+      <br><%= enquiry.comment %>  
+      </div> 
     </p>
   <% end %>
+  </div>
+</div>

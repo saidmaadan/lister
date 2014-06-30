@@ -1,6 +1,8 @@
-<h1>Make Enquiry about <%= link_to @listing.title, @listing %></h1>
-</header>
+<div class='row'>
+<div class="small-7 large-centered columns"><br><br>
+<h3>Make Enquiry about <%= link_to @listing.title, @listing %></h3>
 
+</fieldset>
 <%= form_for([@listing, @enquiry]) do |f| %>
   <%= render "shared/errors", object: @enquiry %>
   <fieldset>
@@ -11,8 +13,10 @@
       </li>
     </ol>
     <p>
-      <%= f.submit  'Make Enquiry' %> 
+      <%= f.submit  'Make Enquiry', class: 'button' %> 
       <%= link_to "Cancel", @listing, class: 'button' %>
     </p
   </fieldset>
 <% end %>
+</fieldset>
+</div></div>

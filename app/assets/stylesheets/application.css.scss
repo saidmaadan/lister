@@ -85,34 +85,3 @@ footer{
   clear: both;
 }
 
-.home_image{
-  //width: 100%;
-  height: 400px;
-  // margin: 0;
-  background: url('mnp-h2.jpg') no-repeat; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  //background-size: cover;
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
-  margin: auto;
-  margin-top: -25px;
-}
-
-.wrap{
-  position: relative;
-  margin-top: 400px;
-}
-
-#search{
-  width: 80%;
-  text-align: center;
-  margin-left: 100px;
-  bottom: 180px;
-  
-}
-
