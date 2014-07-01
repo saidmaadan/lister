@@ -9,7 +9,7 @@ class Listing < ActiveRecord::Base
 	has_attached_file :upload, styles: {
     :small => "200x200>", :medium => "300x300>",
     :large => "600x500>", :thumb => "100x100>"
-  } #:default_url => "/:style/mks7.jpg"
+  }, #:default_url => "/:style/mks7.jpg"
 
   # validates_attachment_content_type :upload, :content_type => /\Aimage\/.*\Z/
 # 	has_attached_file :upload, styles: {
