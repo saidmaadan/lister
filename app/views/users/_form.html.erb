@@ -1,3 +1,5 @@
+<div class='row'><br>
+
 <%= form_for(@user) do |f| %>
   <%= render "shared/errors", object: @user %>
   <fieldset>
@@ -13,6 +15,7 @@
      </li>
 
       <li class="required">
+        
         <%= f.label :email %>
         <%= f.email_field :email, size: 40 %>
       </li>
@@ -33,6 +36,6 @@
       <% end %>
     </p>
   </fieldset>
-<% end %>
+<% end %></div>
 
 <%= render 'form' %>
