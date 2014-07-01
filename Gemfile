@@ -54,10 +54,17 @@ gem 'gmaps4rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'sunspot_rails'
+
 group :development do
-   gem 'sunspot_solr'
- end
+	gem 'sunspot_solr'
+end
+
 gem 'nifty-generators'
+
+group :production do
+  gem 'rails_12factor'
+end
+
 #gem 'tire'
 # Use unicorn as the app server
 # gem 'unicorn'
