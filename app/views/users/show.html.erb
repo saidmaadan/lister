@@ -23,17 +23,20 @@
     <% else %>
     <%= profile_image_for@user, size: 250 %>
     <% end %>
+    <% if current_user?(@user) %>
   <li class="tab-title active"><a href="#panel1a">Info</a></li>
   <li class="tab-title"><a href="#panel2a">Video</a></li>
   <li class="tab-title"><a href="#panel3a">Acoount Setting</a></li>
+ 
   <li class="tab-title"><a href="#panel4a">Edit Profile</a></li>
+
    <li class="tab-title"><a href="#panel5a">Review & Enquiry</a></li>
-    <li class="tab-title"><a href="#panel6a">Picture</a></li>
+    <li class="tab-title"><a href="#panel6a">Picture</a></li><% end %>
    <%# if current_user?(@user) %>
       <%# link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
       <%# end %>
       <%# if current_user_admin? %>
-      
+    
 </ul>
 
 <div class="tabs-content vertical medium-8 columns">
@@ -112,6 +115,7 @@
 </p>
   </div>
   <div class="content" id="panel3a">
+  
     <p><%= form_for(@user) do |f| %>
   <%= render "shared/errors", object: @user %>
   <fieldset>

@@ -117,9 +117,11 @@
   </div>
 
 <nav>
+  <%# if current_user?(@user) %>
+  <%= link_to 'Edit', edit_listing_path(@listing), class: 'button' %>
+        <%# end %>
     
     <% if current_user_admin? %>
-      <%= link_to 'Edit', edit_listing_path(@listing), class: 'button' %>
       
       
       <%= link_to 'Delete', @listing, 

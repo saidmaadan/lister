@@ -8,20 +8,17 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-  Paperclip.options[:command_path] = "/usr/bin/"
-#   config.paperclip_defaults = {
-#   :storage => :s3,
-#   :s3_credentials => {
-#     :bucket => ENV['saidmfola'],
-#     :access_key_id => ENV['AKIAIHKZTDWOW7I433ZQ'],
-#     :secret_access_key => ENV['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']
-#   }
-# }
+  # Paperclip.options[:command_path] = "/usr/bin/"
 
-  # CLIENT_ID = 109334
-  # CLIENT_SECRET = "e48a1bf955"
-  # USE_STAGE = true
-  # WEPAY = WePay.new(CLIENT_ID, CLIENT_SECRET, USE_STAGE)
+  config.paperclip_defaults = { 
+    :storage => :s3, 
+    :s3_credentials => { 
+      :bucket => ENV['AWS_BUCKET'], 
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'], 
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'] 
+    }
+  }
+
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

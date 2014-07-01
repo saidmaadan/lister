@@ -4,14 +4,23 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => ENV['saidmfola'],
-    :access_key_id => ENV['AKIAIHKZTDWOW7I433ZQ'],
-    :secret_access_key => ENV['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']
+  config.paperclip_defaults = { 
+    :storage => :s3, 
+    :s3_credentials => { 
+      :bucket => ENV['AWS_BUCKET'], 
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'], 
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
   }
-}
+
+#   config.paperclip_defaults = {
+#   :storage => :s3,
+#   :s3_credentials => {
+#     :bucket => ENV['saidmfola'],
+#     :access_key_id => ENV['AKIAIHKZTDWOW7I433ZQ'],
+#     :secret_access_key => ENV['Q1Aqqk5Hzj4ToOfTLSq4lOmoTkbhgt55qD9JY4L+']
+#   }
+# }
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -29,7 +38,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier

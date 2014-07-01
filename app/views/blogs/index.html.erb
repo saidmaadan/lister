@@ -25,9 +25,9 @@
           <% if blog %>
             <div class="medium-3 columns">
               <div class="listing_list">
-              <h2><%= link_to(blog.title, blog) %></h2>
+              <h4><%= link_to(blog.title, blog) %></h4>
               
-                <%= blog.content %>
+                <%= truncate(blog.content, length: 150, separator: ' ') %>
               </div>
             </div>
             <% end %>

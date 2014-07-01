@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
-# gem 'pg'
-gem 'sqlite3'
+gem 'pg'
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'foundation-rails'
@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'rmagick', '2.13.2', :git=>'http://github.com/rmagick/rmagick.git'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
+gem 'figaro'
 
 group :development do
 	gem 'rails_layout'
@@ -35,6 +36,10 @@ end
 
 group :test, :development do
   gem "rspec-rails"
+end
+
+group :development do
+  gem 'sqlite3'
 end
 
 group :test do

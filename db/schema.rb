@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140629032512) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "amenities", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -27,7 +30,13 @@ ActiveRecord::Schema.define(version: 20140629032512) do
     t.datetime "updated_at"
   end
 
-  add_index "blogs", ["user_id", "created_at"], name: "index_blogs_on_user_id_and_created_at"
+  add_index "blogs", ["user_id", "created_at"], name: "index_blogs_on_user_id_and_created_at", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categorizations", force: true do |t|
     t.integer  "listing_id"
@@ -36,8 +45,8 @@ ActiveRecord::Schema.define(version: 20140629032512) do
     t.datetime "updated_at"
   end
 
-  add_index "categorizations", ["amenity_id"], name: "index_categorizations_on_amenity_id"
-  add_index "categorizations", ["listing_id"], name: "index_categorizations_on_listing_id"
+  add_index "categorizations", ["amenity_id"], name: "index_categorizations_on_amenity_id", using: :btree
+  add_index "categorizations", ["listing_id"], name: "index_categorizations_on_listing_id", using: :btree
 
   create_table "enquiries", force: true do |t|
     t.text     "comment"
@@ -47,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140629032512) do
     t.integer  "user_id"
   end
 
-  add_index "enquiries", ["listing_id"], name: "index_enquiries_on_listing_id"
+  add_index "enquiries", ["listing_id"], name: "index_enquiries_on_listing_id", using: :btree
 
   create_table "likes", force: true do |t|
     t.integer  "user_id"
@@ -55,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140629032512) do
     t.datetime "updated_at"
   end
 
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "listings", force: true do |t|
     t.string   "home_type"
@@ -74,6 +83,10 @@ ActiveRecord::Schema.define(version: 20140629032512) do
     t.text     "info"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "listings_file_name"
+    t.string   "listings_content_type"
+    t.integer  "listings_file_size"
+    t.datetime "listings_updated_at"
     t.string   "upload_file_name"
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
@@ -92,7 +105,7 @@ ActiveRecord::Schema.define(version: 20140629032512) do
     t.datetime "updated_at"
   end
 
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
