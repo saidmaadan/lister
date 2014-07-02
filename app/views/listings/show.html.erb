@@ -16,7 +16,8 @@
   <%= image_tag @listing.upload.url(:large) %></div>
    <div class="content active" id="panel2-2">
      
-    <p id="directions" style='width: 600px; height: 400px;'></p></div>
+     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=600x400&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
+    <!-- <p id="directions" style='width: 600px; height: 400px;'></p> --></div>
 <div class="content active" id="panel2-3">
     <ul>
       <% @amenities.each do |a| %>
