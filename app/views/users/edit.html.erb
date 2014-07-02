@@ -1,9 +1,48 @@
-<header>
-  <h1>Edit Account</h1>
-</header>
+<div class='row'>
+<div class='small-8 large-centered columns'>
+
+<dl class="sub-nav">
+  <dt>Filter:</dt>
+  <dd class="active"><%= link_to 'Dashboard', current_user %></dd>
+  <dd><%= link_to 'Profile', profile_path(current_user)
+                   %></dd>
+  <dd><%= link_to 'Add Listings', new_listing_path %></dd>
+  <dd><%= link_to 'Create Post', new_blog_path %></dd>
+  <dd><%= link_to 'All Listings', listings_list_path %></dd>
+</dl>
+</div></div>
+<div class='row user_main'>
+<br>
 
 
-<%= form_for(@user) do |f| %>
+
+<ul class="tabs vertical medium-4 columns" data-tab>
+<% if profile_image_for(@user).nil? %>
+    <%= image_tag @user.avatar.url %>
+    <% else %>
+    <%= profile_image_for@user, size: 250 %>
+    <% end %>
+    <% if current_user?(@user) %>
+  <li class="tab-title active"><a href="#panel1a">Account Setting</a></li>
+  <li class="tab-title"><a href="#panel2a">Info</a></li>
+  <li class="tab-title"><a href="#panel3a">Edit Profile</a></li>
+ 
+  <li class="tab-title"><a href="#panel4a">Video</a></li>
+<% end %>
+   <%# if current_user?(@user) %>
+      <%# link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
+      <%# end %>
+      <%# if current_user_admin? %>
+    
+</ul>
+
+<div class="tabs-content vertical medium-8 columns">
+
+  <div class="content active" id="panel1a">
+  <div class='row'>
+  <div class="content" id="panel4a">
+
+<p><%= form_for(@user) do |f| %>
   <%= render "shared/errors", object: @user %>
   <fieldset>
     <ol>
@@ -33,8 +72,124 @@
     <p>
       
     
-        <%= f.submit "Update Account" %>
+        <%= f.submit "Update Account", class: 'button' %>
      
     </p>
   </fieldset>
-<% end %>
+<% end %></p>
+
+  </div>
+  <br><br>
+
+   </div>
+  </div>
+   <div class="content" id="panel2a">
+
+<table class='user_profile2'>
+  <tr>
+  <th></th>
+    <td><h3><%= @user.name %></h3></td>
+  </tr>
+  <tr>
+    <th>Email:</th>
+    <td><%= mail_to(@user.email) %></td>
+  </tr>
+  <tr>
+    <th><h4>Member Since</h4></th>
+    <td><%= @user.created_at.strftime("%B %Y") %></td>
+  </tr>
+  <tr>
+    <th>Phone No:</th>
+    <td><%= @user.phone_number %></td>
+  </tr>
+  <tr>
+    <th>School Attended</th>
+    <td><%= @user.school %></td>
+  </tr>
+  <tr>
+    <th>Professional</th>
+    <td><%= @user.work %></td>
+  </tr>
+  <tr>
+    <th>Work Place</th>
+    <td><%= @user.work %></td>
+  </tr>
+  <tr>
+    <th>Your Location</th>
+    <td><%= @user.where_you_live %></td>
+  </tr>
+  <tr>
+    <th>About</th>
+    <td><%= @user.info %></td>
+  </tr>
+</table>
+  </div>
+  <div class="content" id="panel3a">
+  <p> <p><%= form_for(@user) do |f| %>
+  <%= render "shared/errors", object: @user %>
+  <fieldset>
+    
+      <p>
+        <%= f.label :sex %>
+        <%= f.select :sex, User::SEX, prompt: "Select One" %>
+      </p>
+      <p>
+         
+     </p>
+
+      <p>
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, size: 40 %>
+      </p>
+      <p>
+        <%= f.label :where_you_live %>
+        <%= f.text_field :where_you_live, size: 40 %>
+      </p>
+      <p>
+        <%= f.label :marital_status %>
+         <%= f.select :marital_status, User::MARITAL_STATUS, prompt: "Select One" %>
+      </p>
+      <p>
+        <%= f.label :school %>
+        <%= f.text_field :school, size: 40 %>
+      </p>
+      <p>
+        <%= f.label :work %>
+        <%= f.text_field :work, size: 40 %>
+      </p>
+      <p>
+        <%= f.label :info, 'Describe Yourself' %>
+        <%= f.text_area :info, size: 40 %>
+      </p>
+      <p>
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, size: 40 %>
+      </p>
+      <p>
+        <%= f.label :video %>
+        <%= f.text_field :video, size: 40 %>
+      </p>
+      
+  
+    <p>
+      
+    
+        <%= f.submit "Update Profile", class: 'button' %>
+     
+    </p>
+  </fieldset>
+<% end %></p></p>
+    
+  </div>
+  <div class="content" id="panel4a">
+    <p><iframe width="750" height="450" src="//www.youtube.com/embed/<%= @user.video %>" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+   
+    <!-- <div class="content" id="panel6a"></div>
+    <div class="content" id="panel6a"></div> -->
+  </div></div><br><br>
+
+
+
+

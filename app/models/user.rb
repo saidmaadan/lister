@@ -17,7 +17,11 @@ class User < ActiveRecord::Base
                      format: /\A[A-Z0-9]+\z/i,
                      uniqueness: { case_sensitive: false }
 
+  SEX = ['Male', 'Female', "I'll rather not say"]
+  validates :sex, inclusion: { in: SEX }
 
+  MARITAL_STATUS = ['Single', 'Married', 'Divorced', "I'll rather not say"]
+  validates :marital_status, inclusion: { in: MARITAL_STATUS }
 
 
 	has_attached_file :avatar, styles: {

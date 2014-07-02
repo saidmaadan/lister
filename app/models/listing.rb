@@ -32,11 +32,11 @@ class Listing < ActiveRecord::Base
   validates :summary, length: { minimum: 25 }
   validates :pricing, numericality: { greater_than_or_equal_to: 0 }
 
-  # APARTMENT_TYPE = ['Apartment', 'home', 'Shared Room', 'Private room', 'Other']
-  # validates :apartment_type, inclusion: { in: APARTMENT_TYPE }
+  APARTMENT_TYPE = ['Apartment', 'Entire House', 'Shared Room', 'Private room', 'Other']
+  validates :apartment_type, inclusion: { in: APARTMENT_TYPE }
 
-  # USER_TYPE = ['MANAGEMENT COMPANY', 'OWNER', 'AGENCY', 'BROKER', 'TENANT']
-  # validates :user_type, inclusion: { in: USER_TYPE } 
+  USER_TYPE = ['MANAGEMENT COMPANY', 'OWNER', 'AGENCY', 'BROKER', 'TENANT']
+  validates :user_type, inclusion: { in: USER_TYPE } 
 
   has_many :enquiries, dependent: :destroy
 
