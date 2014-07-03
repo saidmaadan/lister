@@ -1,20 +1,11 @@
 class Listing < ActiveRecord::Base
 	belongs_to :user
 
-   # Tire::Model::Search
-   # Tire::Model::Callbacks
-
-
-
 	has_attached_file :upload, styles: {
     :small => "200x200>", :medium => "300x300>",
     :large => "600x500>", :thumb => "100x100>"
   }, #:default_url => "/:style/mks7.jpg"
 
-  # validates_attachment_content_type :upload, :content_type => /\Aimage\/.*\Z/
-# 	has_attached_file :upload, styles: {
-#     :small => "200x150>", :medium => "300x200>",
-#     :large => "500x500>", :thumb => "100x100>"},
     :storage => :s3,
     :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
     validates_attachment_content_type :upload, :content_type => /\Aimage\/.*\Z/
@@ -25,7 +16,7 @@ class Listing < ActiveRecord::Base
         :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
         :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
-    #{:bucket => "saidmfola", :access_key_id => "AKIAIHKZTDWOW7I433ZQ", :secret_access_key => "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"}
+    
   end
 
   validates :title, :address, :bedroom, :bathroom, :contact_name, :phone, presence: true

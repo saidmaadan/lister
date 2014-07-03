@@ -13,15 +13,6 @@ Rails.application.configure do
     }
   }
 
-#   config.paperclip_defaults = {
-#   :storage => :s3,
-#   :s3_credentials => {
-#     :bucket => ENV['saidmfola'],
-#     :access_key_id => ENV['AKIAIHKZTDWOW7I433ZQ'],
-#     :secret_access_key => ENV['Q1Aqqk5Hzj4ToOfTLSq4lOmoTkbhgt55qD9JY4L+']
-#   }
-# }
-
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
