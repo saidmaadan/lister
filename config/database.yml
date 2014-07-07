@@ -128,3 +128,6 @@ production:
   database: lister_production
   username: lister
   password: <%= ENV['asindo'] %>
+
+
+  
