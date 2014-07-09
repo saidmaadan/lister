@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :blogs, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :enquiries, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :likers, through: :likes, source: :user
+  # has_many :likes, dependent: :destroy
+  # has_many :likers, through: :likes, source: :user
 
   validates :name, presence: true
   validates :email, presence: true,                   

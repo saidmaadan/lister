@@ -14,11 +14,11 @@ class UsersController < ApplicationController
     @is_admin = current_user && current_user.id == @user.id
 		@enquiries = @user.enquiries
 		@reviews = @user.reviews
-		@likers = @user.likers
-    # @liked = @user.liked
-		if current_user
-      @current_like = current_user.likes.find_by(user_id: @user.id)
-    end
+		# @likers = @user.likers
+  #   # @liked = @user.liked
+		# if current_user
+  #     @current_like = current_user.likes.find_by(user_id: @user.id)
+  #   end
     
 	end
 

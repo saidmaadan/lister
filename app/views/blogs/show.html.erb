@@ -19,11 +19,13 @@
     
     <%# end %>
     <%# if correct_user %>
+     <% if current_user_admin? %>
       <%= link_to 'Edit', edit_blog_path(@blog), class: 'button' %>
       
       
       <%= link_to 'Delete', @blog, 
                   class: 'button',
                   method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
                   <% end %>
     </nav></div></div>

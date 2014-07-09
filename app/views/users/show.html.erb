@@ -86,27 +86,27 @@
 </div><br><br>
 <div class='medium-3 columns'>
    <p>
-    <%= pluralize(@likers.count, 'like') %> 
+    <%# pluralize(@likers.count, 'like') %> 
   </p>
 
 
-    <% if @current_like %>
-      <%= button_to "Unlike", user_like_path(@user, @current_like), method: :delete, class: 'button disable' %>
-    <% else %>  
-      <%= button_to "Like", user_likes_path(@user), class: 'button' %>
-    <% end %>
+    <%# if @current_like %>
+      <%#= button_to "Unlike", user_like_path(@user, @current_like), method: :delete, class: 'button disable' %>
+    <%# else %>  
+      <%#= button_to "Like", user_likes_path(@user), class: 'button' %>
+    <%# end %>
   
   
-  <% if @likers.any? %>
-    <h3>Likers</h3>
-    <ul>
-      <% @likers.each do |user| %>
-        <li>
-          <%= link_to user.name, user %>
-        </li>
-      <% end %>
+  <%# if @likers.any? %>
+   <!--  <h3>Likers</h3>
+    <ul> -->
+      <%# @likers.each do |user| %>
+        <!-- <li> -->
+          <%#= link_to user.name, user %>
+        <!-- </li>
+      <%# end %>
     </ul>
-  <% end %>
+  <%# end %> -->
 </div>
    </div>
   </div>
