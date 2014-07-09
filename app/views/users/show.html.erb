@@ -43,7 +43,7 @@
 
   <div class="content active" id="panel1a">
   <div class='row'>
-  <div class='medium-9 columns'>
+  <div class='medium-11 columns'>
   
 <table class='user_profile'>
   <tr>
@@ -119,30 +119,29 @@
     <p><%= form_for(@user) do |f| %>
   <%= render "shared/errors", object: @user %>
   <fieldset>
-    <ol>
-      <li class="required">
+    
+      <p class="required">
         <%= f.label :name %>
         <%= f.text_field :name, size: 40, autofocus: true %>
-      </li>
-      <li class="required">
+      </p>
+      <p class="required">
           <%= f.label :username %>
           <%= f.text_field :username, size: 40, 
                     placeholder: "Alphanumeric characters only!" %>
-     </li>
+     </p>
 
-      <li class="required">
+      <p class="required">
         <%= f.label :email %>
         <%= f.email_field :email, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p class="required">
         <%= f.label :password %>
         <%= f.password_field :password, size: 40 %>
-      </li>
-      <li class="required">
+      </p>
+      <p class="required">
         <%= f.label :password_confirmation, "Confirm Password" %>
         <%= f.password_field :password_confirmation, size: 40 %>
-      </li>
-    </ol>
+      </p>
     <p>
       
     
@@ -254,6 +253,7 @@
   
   
     <nav>
+
     <%= link_to pluralize(@user.reviews.size, "Reviews"), user_reviews_path(@user) %><br><br>
     <%= link_to "Write Review", new_user_review_path(@user), 
              class: 'button ok review' %><br>

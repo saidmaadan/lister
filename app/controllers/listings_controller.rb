@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
 	before_action :require_signin, except: [:index, :show, :list]
 	before_action :correct_user, only: [:edit, :update]
-  #before_action :require_admin, only: [:destroy]
+    before_action :require_admin, only: [:destroy]
 
 
 	def index
