@@ -25,8 +25,8 @@ https://lister.herokuapp.com
 	<li>Blogs</li>
 </ul>
 <h2>User Interface Diagram:</h2><br>
-<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/Lister.png">
-<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/lister1.png">
-<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/lister2.png">
-<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/lister3.png">
+<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/Lister.png"><br>
+<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/lister1.png"><br>
+<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/lister2.png"><br>
+<img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/lister3.png"><br>
 <img src="http://s3-us-west-2.amazonaws.com/saidmfola/projects/screenshots/000/000/app/lister4.png">
