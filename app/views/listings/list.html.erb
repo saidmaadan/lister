@@ -17,8 +17,10 @@
 <div class="list_all">
 
   <div class='map_list'>
-    <p id="directions" style='width: 500px; height: 550px;'></p>
-  </div>
+  
+  <!-- <div class="medium-3 columns small-4 columns"> -->
+    <p id="directions" style='width: 490px; height: 550px;'></p>
+  </div><!-- </div> -->
 
     <div class="list_wrapper">
     <% if @listings.any? %>
@@ -27,7 +29,7 @@
        <div class="row">
         <% group.each do |listing| %>
           <% if listing %>
-            <div class="medium-6 columns">
+            <div class="medium-6 columns small-12 columns">
         
                  
                  <%= image_tag listing.upload.url(:medium) %>
