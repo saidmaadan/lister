@@ -33,11 +33,11 @@
 <% if @listings.any? %>
   <div class="row">
   <br>
-    <% @listings.in_groups_of(4) do |group| %>
+    <% @listings.each_slice(4) do |listing| %>
       <div class="row">
-        <% group.each do |listing| %>
+        <% listing.each do |listing| %>
           <% if listing %>
-            <div class="medium-3 columns">
+            <div class="medium-3 columns small-6 columns">
               <div class="listing_list">
               
               <%= image_tag listing.upload.url(:medium) %>
@@ -56,7 +56,7 @@
           </tr>
           <tr>
              <!-- <th><h3>Price</h3></th> -->
-            <td class='button [tiny small large]'><%= format_price (listing) %></td>
+            <td class='button [tiny small large]'>Rent: <%= format_price (listing) %></td>
           </tr>
         </table>
 

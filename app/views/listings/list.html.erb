@@ -15,41 +15,39 @@
     </div></div></section>
     
 <div class="list_all">
+  <div class='medium-6 columns small-12 columns' style="margin:0;padding:0;">
+      <p id="directions" style='width: 100%; height:550px;'></p>
+  </div>
 
-  <div class='map_list'>
-  
-  <!-- <div class="medium-3 columns small-4 columns"> -->
-    <p id="directions" style='width: 490px; height: 550px;'></p>
-  </div><!-- </div> -->
-
-    <div class="list_wrapper">
+  <div class='medium-6 columns small-12 columns' style="height:550px;overflow:auto;margin:0;padding:0;">
     <% if @listings.any? %>
-
-    <% @listings.in_groups_of(2) do |group| %>
-       <div class="row">
+      <% @listings.each_slice(2) do |group| %>
         <% group.each do |listing| %>
           <% if listing %>
-            <div class="medium-6 columns small-12 columns">
-        
-                 
-                 <%= image_tag listing.upload.url(:medium) %>
-                 <h3><%= link_to(listing.title, listing) %></h3>
-                 <table>
-          <tr>
-            <th>Location</th>
-            <td><%= listing.address %></td>
-          </tr>
-          <tr>
-            <th>Price</th>
-            <td><%= format_price(listing) %></td>
-          </tr>
-        </table>
+            <div class="medium-6 columns small-12 columns" >
+                 <%= image_tag listing.upload.url(:medium), style: 'width:100%;height:150px;' %>
+                 <h4><%= link_to(listing.title, listing) %></h4>
+                 <!-- <strong>Location</strong>
+                 <%= listing.address %>
+                 <strong>Price</strong>
+                 <%= format_price(listing) %> -->
+                <table>
+                  <tr style= 'height:80px;'>
+                    <th>Location</th>
+                    <td><%= listing.address %></td>
+                  </tr>
+                  <tr>
+                    <th>Price</th>
+                    <td><%= format_price(listing) %></td>
+                  </tr>
+                </table>
                 </div>
             <% end %>
           <% end %>
-          </div>
+          <!-- </div> -->
         <% end %>
          <% end %>
       </div>
-   
+      </div>
+   </div>
     </div>
