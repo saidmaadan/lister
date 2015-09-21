@@ -15,9 +15,7 @@
     </div></div></section>
     
 <div class="list_all">
-  <div class='medium-6 columns small-12 columns' style="margin:0;padding:0;">
-      <p id="directions" style='width: 100%; height:550px;'></p>
-  </div>
+  
 
   <div class='medium-6 columns small-12 columns' style="height:550px;overflow:auto;margin:0;padding:0;">
     <% if @listings.any? %>
@@ -26,7 +24,7 @@
           <% if listing %>
             <div class="medium-6 columns small-12 columns" >
                  <%= image_tag listing.upload.url(:medium), style: 'width:100%;height:150px;' %>
-                 <h4><%= link_to(listing.title, listing) %></h4>
+                 <h4><%= link_to(listing.title, listing)%></h4>
                  <!-- <strong>Location</strong>
                  <%= listing.address %>
                  <strong>Price</strong>
@@ -48,6 +46,9 @@
         <% end %>
          <% end %>
       </div>
+      <div class='medium-6 columns small-12 columns' style="margin:0;padding:0;">
+      <p id="directions" style='width: 100%; height:550px;'></p>
+  </div>
       </div>
    </div>
     </div>
