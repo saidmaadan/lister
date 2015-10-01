@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
     if params[:search].present?
       @listings = Listing.search(params[:search])
     else
-      @listings = Listing.order("created_at DESC").limit(8)
+      @listings = Listing.order("created_at DESC").limit(4)
     end
   end
 
