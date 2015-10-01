@@ -10,14 +10,14 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+		@user = User.friendly.find(params[:id])
     @is_admin = current_user && current_user.id == @user.id
 		@enquiries = @user.enquiries
 		@reviews = @user.reviews
 		# @likers = @user.likers
   #   # @liked = @user.liked
 		# if current_user
-  #     @current_like = current_user.likes.find_by(user_id: @user.id)
+  #     @current_like = current_user.likes.friendly.find_by(user_id: @user.id)
   #   end
     
 	end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 
   def edit
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   end
   
   def destroy
-  	@user = User.find(params[:id])
+  	@user = User.friendly.find(params[:id])
     @user.destroy
     # session[:user_id] = nil
     redirect_to root_url, alert: "Account successfully deleted!"
@@ -68,7 +68,7 @@ private
   end
 
   def require_correct_user
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     unless current_user?(@user)
       redirect_to root_url 
     end

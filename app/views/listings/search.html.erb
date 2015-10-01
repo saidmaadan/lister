@@ -1,10 +1,10 @@
 <section>
 <div class="row list_search">
     <div class="large-10 large-centered columns form_search">
-     <%= form_tag search_listings_path, method: :get do %>
+     <%= form_tag listings_path, method: :get do %>
       <div class="row collapse">
         <div class="small-10 columns">
-        <%= text_field_tag :search, params[:search], placeholder: "Find a place to stay." %>
+        <%= text_field_tag :query, params[:query], placeholder: "Find a place to stay." %>
           
         </div>
         <div class="small-2 columns">
@@ -16,21 +16,6 @@
     
 <div class="list_all">
   
-   <div class='medium-6 columns small-12 columns' style="margin:0;padding:0;">
-      <!-- <p id="directions" style='width: 100%; height:550px;'></p> -->
-      <iframe
-        <% @listings.each do |listing| %>
-          <%# listing.address.each do |address| %>
-            width="100%"
-            height="550"
-            frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBB2gFnX3mWZNOINgVNx7lqId-Wn8sAnWY
-              &q=<%= listing.address.parameterize %>&zoom=14">
-            <%# end %>
-        <% end %>
-      </iframe>
-
-  </div>
 
   <div class='medium-6 columns small-12 columns' style="height:550px;overflow:auto;margin:0;padding:0;">
     <% if @listings.any? %>
@@ -61,7 +46,9 @@
         <% end %>
          <% end %>
       </div>
-     
+      <div class='medium-6 columns small-12 columns' style="margin:0;padding:0;">
+      <p id="directions" style='width: 100%; height:550px;'></p>
+  </div>
       </div>
    </div>
     </div>

@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   root 'listings#index'
   resources :listings do 
     resources :enquiries
+    collection do
+      get 'search'
+    end
   end
 
 

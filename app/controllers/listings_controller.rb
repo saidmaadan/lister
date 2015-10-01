@@ -1,8 +1,16 @@
 class ListingsController < ApplicationController
-	before_action :require_signin, except: [:index, :show, :list]
+	before_action :require_signin, except: [:index, :show, :list, :search]
 	before_action :correct_user, only: [:edit, :update]
-    before_action :require_admin, only: [:destroy]
+  before_action :require_admin, only: [:destroy]
 
+  def search
+  	@listing = Listing.friendly.find(params[:id])
+    if params[:search].present?
+      @listings = Listing.search(params[:search])
+    else
+      @listings = Listing.order("created_at DESC").limit(8)
+    end
+  end
 
 	def index
 		@listings = Listing.recently_added.limit(4)
@@ -13,32 +21,22 @@ class ListingsController < ApplicationController
 	    @listings = Listing.near(params[:search], 50, :order => :distance)
 	  else
 			@listings = Listing.recently_added
-		  end
+		end
 	end
 	
 
 	def show
-		@listing = Listing.find(params[:id])
+		@listing = Listing.friendly.find(params[:id])
 		@amenities = @listing.amenities
-		@hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
-		  marker.lat listing.latitude
-		  marker.lng listing.longitude
-		  marker.infowindow listing.address
-		  marker.picture({
-		  	'url' => 'https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png',
-		  	width => 32,
-		  	'height' => 32
-		  	})
-		  marker.json({address: listing.address})
 		end
 	end
 
 	def edit
-		@listing = Listing.find(params[:id])
+		@listing = Listing.friendly.find(params[:id])
 	end
 
 	def update
-		@listing = Listing.find(params[:id])
+		@listing = Listing.friendly.find(params[:id])
 		if @listing.update(listing_params)
 			redirect_to @listing, notice: "Listing successfully updated"
 		else
@@ -61,7 +59,7 @@ class ListingsController < ApplicationController
 	end
 
 	def destroy
-		@listing = Listing.find(params[:id])
+		@listing = Listing.friendly.find(params[:id])
 		@listing.destroy
 		redirect_to listings_url, alert: "Listing successfully deleted"
 	end
@@ -73,8 +71,7 @@ class ListingsController < ApplicationController
 	end
 
 	def correct_user
-  	unless @listing = current_user.listings.find_by(id: params[:id])
+  	unless @listing = current_user.listings.friendly.find_by(id: params[:id])
   	redirect_to listings_url, alert: "Unauthorized access!"
 	end
-end
 end

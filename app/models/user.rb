@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :enquiries, dependent: :destroy
   # has_many :likes, dependent: :destroy
   # has_many :likers, through: :likes, source: :user
+  extend FriendlyId
+  friendly_id :username, use: :slugged
 
   validates :name, presence: true
   validates :email, presence: true,                   
@@ -57,4 +59,9 @@ class User < ActiveRecord::Base
   def recent_reviews
     reviews.order('created_at desc').limit(3)
   end
+
+  def should_generate_new_friendly_id?
+      new_record?
+  end
+
 end

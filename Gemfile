@@ -28,6 +28,8 @@ gem "rmagick", :require => 'RMagick'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'searchkick'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development do
 	gem 'rails_layout'

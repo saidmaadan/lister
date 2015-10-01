@@ -18,6 +18,23 @@ class Listing < ActiveRecord::Base
     }
     
   end
+  extend FriendlyId
+  friendly_id :slug_listings, use: :slugged
+  searchkick
+  # self.per_page = 10
+  
+  def slug_listings
+    [
+      :title,
+      [:title, :accomodate],
+      [:title, :accomodate, :home_type,],
+      [:title, :accomodate, :home_type, :address],
+      [:title, :accomodate, :home_type, :address, :pricing],
+      [:title, :accomodate, :home_type, :address, :pricing, :apartment_type],
+      [:title, :accomodate, :home_type, :address, :pricing, :apartment_type, :contact_name],
+      [:title, :accomodate, :home_type, :address, :pricing, :apartment_type, :contact_name, :bedroom ]
+    ]
+  end
 
   validates :title, :address, :bedroom, :bathroom, :contact_name, :phone, presence: true
   validates :summary, length: { minimum: 25 }
@@ -47,4 +64,8 @@ class Listing < ActiveRecord::Base
   def self.recently_added
     order('created_at desc')
   end
+  def should_generate_new_friendly_id?
+    new_record?
+  end
+
 end
