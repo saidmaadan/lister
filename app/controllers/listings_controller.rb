@@ -4,7 +4,6 @@ class ListingsController < ApplicationController
   before_action :require_admin, only: [:destroy]
 
   def search
-  	@listing = Listing.friendly.find(params[:id])
     if params[:search].present?
       @listings = Listing.search(params[:search])
     else
@@ -71,7 +70,7 @@ class ListingsController < ApplicationController
 	end
 
 	def correct_user
-  	unless @listing = current_user.listings.friendly.find_by(id: params[:id])
+  	unless @listing = current_user.listings.find_by(id: params[:id])
   	redirect_to listings_url, alert: "Unauthorized access!"
 	end
 end
