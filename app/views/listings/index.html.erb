@@ -1,25 +1,25 @@
 
-<div class='home_image'> <br><br><br><br><br><br><br><br>
-<div class="row search_home">
-    <div class="large-10 large-centered columns form_search">
-     <%= form_tag search_listings_path, method: :get do %>
-      <div class="row collapse">
-        <div class="small-10 columns">
-        <%= text_field_tag :search, params[:search], placeholder: "Check out for a place to stay." %>
-          
-        </div>
-        <div class="small-2 columns">
-        <%= submit_tag "Search for Home", name: nil, class: "button postfix" %>
-        </div>
-         <label class='looking'>What are you looking for?</label>
+<div class='home_image'>
+  <div class="large-10 large-centered columns form_search">
+    <div class="search_home">
+      <label class='looking'>What are you looking for?</label>
+      <%= form_tag search_listings_path, method: :get do %>
+        <div class="row collapse">
+          <div class="small-10 columns">
+            <%= text_field_tag :search, params[:search], placeholder: "Check out for a place to stay." %> 
+          </div>
+          <div class="small-2 columns">
+            <%= submit_tag "Search for Home", name: nil, class: "button postfix" %>
+          </div>
+         <!-- <label class='looking'>What are you looking for?</label>
       <input type="radio" name="room" value="room" id="pokemonRed"><label for="room">I'm looking for a Room</label>
-      <input type="radio" name="room" value="home" id="pokemonBlue"><label for="roomhome">I'm looking for an entire home</label>
-    
-      </div><% end %>
-    </div></div>
-    
-
+      <input type="radio" name="room" value="home" id="pokemonBlue"><label for="roomhome">I'm looking for an entire home</label> -->
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+
 <div class='wrap'>
 <div class='row'>
   <div class="large-6 large-centered columns">
@@ -48,15 +48,15 @@
           
         </p>
         <table >
-        <tr style= 'height:50px;'><td>
+        <tr style= 'height:80px;'><td>
         <h5><%= link_to(listing.title, listing) %></h5></td></tr>
           <tr>
             <!-- <th>Location</th> -->
-            <td style: 'width:100%;height:150px;'><%= listing.address %></td>
+            <td style: 'width:100%;height:200px;'><%= listing.address %></td>
           </tr>
           <tr>
              <!-- <th><h3>Price</h3></th> -->
-            <td class='button [tiny small large]'>Rent: <%= format_price (listing) %></td>
+            <td class='button [tiny small large]' style= 'width:100%;'>Rent: <%= format_price (listing) %></td>
           </tr>
         </table>
 

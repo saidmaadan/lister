@@ -17,44 +17,63 @@
  @import "foundation";
 
 .top-bar{
-	background: #A8CCED;
-	line-height: 40px;
+	background: #fff;
+	line-height: 60px;
+  height: 60px;
+  padding-top: 10px;
+  border-bottom: 2px solid #fff; 
 }
 .top-bar .name {
   font-size: rem-calc(13);
   line-height: 45px;
+  // .fa{
+  //   color: #e84d3d;
+  // } 
   }
 .top-bar .name a {
-  font-weight: bold;
-  font-size: 1.5em;
-  color: white;
-  padding: 0 45px; }
+  font-weight: 900;
+  font-size: 2em;
+  color: #A8CCED;
+  padding: 0 45px;
+  
+}
+
 
  .top-bar-section {
   font-weight: bold;
   font-size: 1.7em;
-  color: white;
+  color: #A8CCED;
   padding: 0 25px;
-  background: #A8CCED; }
+  background: #fff }
 
   .top-bar-section li:not(.has-form) a:not(.button){
-  	background: #A8CCED;
+  	background: #fff;
   	font-weight: normal;
     font-size: 1em;
+    color: #A8CCED;
+    font-weight: 900;
 
   }
 
   .top-bar-section li:not(.has-form) a:not(.button):hover{
-  	background: #A8CCED;
+  	background: #fff;
+    color: #008cba;
 
   }
 .top-bar-section ul li{
-	background: #A8CCED;
+	background: #fff;
 }
 .top-bar-section ul li:hover{
-	background: #A8CCED;
+	background: #fff
 }
-
+.top-bar .toggle-topbar.menu-icon a {
+    height: 35px;
+    line-height: 33px;
+    padding: 0 40px 0 15px;
+    color: white;
+    position: relative;
+    background-color: #A8CCED;
+}
 * {
 margin: 0;
 }
@@ -67,7 +86,7 @@ main {
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -4em;
-	margin-top: 70px;
+	margin-top: 100px;
 }
 footer, .push {
 height: 4em;
@@ -95,7 +114,7 @@ footer{
   color: #3B97B3;
 }
 .copy span{
-  color: white;
+  color: #008cba;
   font-size: 1.1em;
   font-weight: bold;
 }
