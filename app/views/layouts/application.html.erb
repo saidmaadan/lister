@@ -2,8 +2,10 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Lister" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Lister" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Listers: Apartments guide | List and search apartments for Rent" %></title>
+    <meta name="keywords" content="<%= content_for?(:keywords) ? yield(:keywords) : "apartments, apartments for rent, houses for rent, condos for rent, townhomes for rent, apartment finder, apartment rentals, housing rentals, rentals, rent" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "All inclusive site for apartments. Find apartments, homes and condos for rent. Real-time rental availability" %>">
+    <meta name="author" content="Said Maadan">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%# Modernizr is required for Zurb Foundation %>
     <%= javascript_include_tag 'vendor/modernizr' %>
@@ -13,6 +15,7 @@
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
  
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'https://s3.amazonaws.com/inventivelabs/jobinbox/logos/favicon3.ico' %>
   </head>
   <body>
     <header>  
