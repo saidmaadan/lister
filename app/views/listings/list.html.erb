@@ -1,67 +1,69 @@
-<section><br>
-<div class="row list_search">
-    <div class="large-10 large-centered columns form_search">
-     <%= form_tag search_listings_path, method: :get do %>
-      <div class="row collapse">
-        <div class="small-10 columns">
-        <%= text_field_tag :search, params[:search], placeholder: "Find a place to stay." %>
-          
-        </div>
-        <div class="small-2 columns">
-        <%= submit_tag "Search for Home", name: nil, class: "button postfix" %>
-        </div>
+<div class="list-page">
+  <section><br>
+  <div class="row list_search">
+      <div class="large-10 large-centered columns form_search">
+       <%= form_tag search_listings_path, method: :get do %>
+        <div class="row collapse">
+          <div class="small-10 columns">
+          <%= text_field_tag :search, params[:search], placeholder: "Find a place to stay." %>
+            
+          </div>
+          <div class="small-2 columns">
+          <%= submit_tag "Search for Home", name: nil, class: "button postfix" %>
+          </div>
+      
+        </div><% end %>
+      </div></div></section>
+      
+  <div class="list_all">
     
-      </div><% end %>
-    </div></div></section>
-    
-<div class="list_all">
-  
-   <div class='medium-6 columns small-12 columns' style="margin:0;padding:0;">
-      <!-- <p id="directions" style='width: 100%; height:550px;'></p> -->
-      <iframe
-        <% @listings.each do |listing| %>
-          <%# listing.address.each do |address| %>
-            width="100%"
-            height="550"
-            frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBB2gFnX3mWZNOINgVNx7lqId-Wn8sAnWY
-              &q=<%= listing.address.parameterize %>&zoom=14">
-            <%# end %>
-        <% end %>
-      </iframe>
-
-  </div>
-
-  <div class='medium-6 columns small-12 columns' style="height:550px;overflow:auto;margin:0;padding:0;">
-    <% if @listings.any? %>
-      <% @listings.each_slice(2) do |group| %>
-        <% group.each do |listing| %>
-          <% if listing %>
-            <div class="medium-6 columns small-12 columns" >
-                 <%= image_tag listing.upload.url(:medium), style: 'width:100%;height:150px;' %>
-                 <h4><%= link_to(listing.title, listing)%></h4>
-                 <!-- <strong>Location</strong>
-                 <%= listing.address %>
-                 <strong>Price</strong>
-                 <%= format_price(listing) %> -->
-                <table>
-                  <tr style= 'height:80px;'>
-                    <th>Location</th>
-                    <td><%= listing.address %></td>
-                  </tr>
-                  <tr>
-                    <th>Price</th>
-                    <td><%= format_price(listing) %></td>
-                  </tr>
-                </table>
-                </div>
-            <% end %>
+     <div class='large-6 columns medium-4 columns hide-for-small-only' style="margin:0;padding:0;">
+        <!-- <p id="directions" style='width: 100%; height:550px;'></p> -->
+        <iframe
+          <% @listings.each do |listing| %>
+            <%# listing.address.each do |address| %>
+              width="100%"
+              height="550"
+              frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBB2gFnX3mWZNOINgVNx7lqId-Wn8sAnWY
+                &q=<%= listing.address.parameterize %>&zoom=14">
+              <%# end %>
           <% end %>
-          <!-- </div> -->
-        <% end %>
-         <% end %>
-      </div>
-     
-      </div>
-   </div>
+        </iframe>
+
     </div>
+
+    <div class='large-6 columns medium-8 columns small-12 columns' style="height:550px;overflow:auto;margin:0;padding:0;">
+      <% if @listings.any? %>
+        <% @listings.each_slice(2) do |group| %>
+          <% group.each do |listing| %>
+            <% if listing %>
+              <div class="medium-6 columns small-12 columns" >
+                   <%= image_tag listing.upload.url(:medium), style: 'width:100%;height:150px;' %>
+                   <h4 style= 'height:60px;'><%= link_to(listing.title, listing)%></h4>
+                   <!-- <strong>Location</strong>
+                   <%= listing.address %>
+                   <strong>Price</strong>
+                   <%= format_price(listing) %> -->
+                  <table style= 'width:100%;'>
+                    <tr style= 'height:80px;'>
+                      <th>Location</th>
+                      <td><%= listing.address %></td>
+                    </tr>
+                    <tr>
+                      <th>Price</th>
+                      <td><%= format_price(listing) %></td>
+                    </tr>
+                  </table>
+                  </div>
+              <% end %>
+            <% end %>
+            <!-- </div> -->
+          <% end %>
+           <% end %>
+        </div>
+       
+        </div>
+     </div>
+  </div>
+</div>

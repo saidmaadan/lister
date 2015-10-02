@@ -4,10 +4,15 @@
 @import "foundation";
 
 .user_main{
+	width: 100%;
 	border: 2px solid #DAE0DE;
 	background: #FCFFFE;
 	margin-bottom: 40px;
 	border-radius: 5px;
+	h2{
+		text-align: center;
+		padding: 15px;
+	}
 }
 .tabs{
 	border-bottom: 2px solid #DAE0DE;

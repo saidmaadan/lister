@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
 	before_action :require_signin, except: [:index, :show, :list, :search]
-	before_action :correct_user, only: [:edit, :update]
+	#before_action :correct_user, only: [:edit, :update]
   before_action :require_admin, only: [:destroy]
 
   def search
@@ -27,9 +27,8 @@ class ListingsController < ApplicationController
 	def show
 		@listing = Listing.friendly.find(params[:id])
 		@amenities = @listing.amenities
-		end
 	end
-
+	
 	def edit
 		@listing = Listing.friendly.find(params[:id])
 	end
@@ -72,5 +71,6 @@ class ListingsController < ApplicationController
 	def correct_user
   	unless @listing = current_user.listings.find_by(id: params[:id])
   	redirect_to listings_url, alert: "Unauthorized access!"
+		end
 	end
 end

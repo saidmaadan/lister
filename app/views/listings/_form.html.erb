@@ -1,99 +1,142 @@
-<div class='row'><br>
+<div class='row form-listing'><br>
 <%= form_for @listing, :html => { :multipart => true} do |f| %>
   <%= render "shared/errors", object: @listing %>
  
   <div class='row'>
-  <!-- <div id='listiing_title'> -->
-  <div class="small-8 large-centered columns listiing_title"><br><br><br>
-  <div class='medium-6 columns'>
-    <%= f.text_field :title, autofocus: true, placeholder: 'Title' %>
-  </div>
-  <div class='medium-6 columns'>
-    <%= f.number_field :pricing, size: 12, placeholder: 'Price'  %>
-  </div></div><!-- </div> -->
-  
+  <!-- <div id='panel'> -->
+    <div class="medium-8 medium-centered columns small-10 small-centered columns">
+      <div class="panel">
+        <div class="form-field">
+          <div class='medium-6 columns small-12 columns'>
+            <%= f.text_field :title, autofocus: true, placeholder: 'Title' %>
+          </div>
+          <div class='medium-6 columns small-12 columns'>
+            <%= f.number_field :pricing, size: 12, placeholder: 'Price'  %>
+          </div>
+        </div>
+      </div><!-- </div> -->
+    </div>
   </div><br><br>
   <div class='row'>
-  <div class="small-10 large-centered columns listiing_title1"><br><h5>Home Type</h5><br>
-  <div class='medium-6 columns'>
-  <%= f.select :apartment_type, Listing::APARTMENT_TYPE, prompt: "Select Type of Apartment" %>
-    <%# f.text_field :apartment_type, placeholder: 'Apartment Type'  %>
+    <div class="medium-10 medium-centered columns small-10 small-centered columns">
+      <div class="panel">
+        <div class="form-field">
+          <h5>Home Type</h5><br>
+          <div class='medium-6 columns small-6 columns'>
+          <%= f.select :apartment_type, Listing::APARTMENT_TYPE, prompt: "Select Type of Apartment" %>
+            <%# f.text_field :apartment_type, placeholder: 'Apartment Type'  %>
+          </div>
+          <div class='medium-6 columns small-6 columns'>
+            <%= f.text_field :accomodate, size: 30, placeholder: 'Accomodate' %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='medium-6 columns'>
-    <%= f.text_field :accomodate, size: 30, placeholder: 'Accomodate' %>
   </div>
-  </div>
-  </div><br><br>
   <div class='row'>
-  <div class="small-10 large-centered columns listiing_title2"><br><h5>Room Type</h5><br>
-  <div class='medium-6 columns'>
-    <%= f.number_field :bedroom, size: 30, placeholder: 'Number of Bedroom' %>
+    <div class="medium-10 medium-centered columns small-10 small-centered columns">
+      <div class="panel">
+        <div class="form-field">
+          <h5>Room Type</h5><br>
+          <div class='medium-6 columns small-12 columns'>
+            <%= f.number_field :bedroom, size: 30, placeholder: 'Number of Bedroom' %>
+          </div>
+          <div class='medium-6 columns small-12 columns'>
+            <%= f.number_field :bathroom, size: 30, placeholder: 'Number of Bathroom' %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='medium-6 columns'>
-    <%= f.number_field :bathroom, size: 30, placeholder: 'Number of Bathroom' %>
-  </div>
-  </div>
-  </div><br><br>
   <div class='row'>
-  <div class="small-11 large-centered columns listiing_title3"><br><h5>Property Info</h5><br>
-  <div class='medium-7 columns'>
-    <%= f.text_area :summary, cols: 40, rows: 8, placeholder: 'Description: Minimum of 40 characters ' %>
+    <div class="medium-10 medium-centered columns small-10 small-centered columns">
+      <div class="panel">
+        <div class="form-field">
+          <h5>Property Info</h5><br>
+          <div class='medium-7 columns small-12 columns'>
+            <%= f.text_area :summary, cols: 40, rows: 8, placeholder: 'Description: Minimum of 40 characters ' %>
+          </div>
+          <div class='medium-5 columns small-12 columns'>
+            <div class='row'>
+              <div class='medium-12 columns'>
+                <%= f.text_field :address, size: 30, placeholder: 'Property Location?Adress' %>
+              </div>
+              <div class='medium-12 columns'>
+                 <%= f.text_field :latitude, size: 30, placeholder: "Latitude" %>
+              </div>
+              <div class='medium-12 columns'>
+                <%= f.text_field :longitude, size: 30, placeholder: 'Longitude' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='medium-5 columns'>
-    <div class='row'>
-  <div class='medium-12 columns'>
-    <%= f.text_field :address, size: 30, placeholder: 'Property Location?Adress' %>
-  </div>
-  <div class='medium-12 columns'>
-    <%= f.text_field :latitude, size: 30, placeholder: "Latitude" %>
-  </div>
-  <div class='medium-12 columns'>
-    <%= f.text_field :longitude, size: 30, placeholder: 'Longitude' %>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div><br><br>
   <div class='row'>
-  <div class="small-11 large-centered columns listiing_title5"><br><h5>Contact Person</h5><br>
-  <div class='medium-4 columns'>
-    <%= f.text_field :phone, size: 30, placeholder: "Phone Number" %>
+    <div class="medium-10 medium-centered columns small-10 small-centered columns">
+      <div class="panel">
+        <div class="form-field">
+          <h5>Contact Person</h5><br>
+          <div class='medium-4 columns'>
+          <%= f.text_field :phone, size: 30, placeholder: "Phone Number" %>
+          </div>
+          <div class='medium-4 columns'>
+            <%= f.text_field :contact_name, size: 30, placeholder: "Contact Name" %>
+          </div>
+          <div class='medium-4 columns'>
+            <%= f.text_field :company_name, size: 30, placeholder: "Company Name" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='medium-4 columns'>
-    <%= f.text_field :contact_name, size: 30, placeholder: "Contact Name" %>
-  </div>
-  <div class='medium-4 columns'>
-    <%= f.text_field :company_name, size: 30, placeholder: "Company Name" %>
-  </div>
-  </div><br><br>
    <div class='row'>
-   <div class="small-8 large-centered columns listiing_title6"><br><br><br>
-  <div class='medium-6 columns'>
-    <%= f.text_field :website_url, size: 30, placeholder: "Website URL" %>
+    <div class="medium-10 medium-centered columns small-10 small-centered columns">
+      <div class="panel">
+        <div class="form-field">
+          <div class='medium-6 columns small-12 columns'>
+            <%= f.text_field :website_url, size: 30, placeholder: "Website URL" %>
+          </div>
+          <div class='medium-6 columns small-12 columns'>
+           <%= f.select :user_type, Listing::USER_TYPE, prompt: "User Type" %>
+            <%# f.text_field :user_type, placeholder: "User Type" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='medium-6 columns'>
-   <%= f.select :user_type, Listing::USER_TYPE, prompt: "User Type" %>
-    <%# f.text_field :user_type, placeholder: "User Type" %>
-  </div></div><br><br>
-  
   <div class='row'>
-  <div class="small-8 large-centered columns listiing_title7"><br><br><br>
-  <div class='medium-8 columns'>
-    <%= f.text_field :info, size: 30, placeholder: 'More Info' %>
+    <div class="medium-10 medium-centered columns small-10 small-centered columns">
+      <div class="panel">
+        <div class="form-field">
+          <div class='medium-8 columns'>
+            <%= f.text_field :info, size: 30, placeholder: 'More Info' %>
+          </div>
+          <div class='medium-4 columns'>
+            <%= f.file_field :upload, size: 30 %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='medium-4 columns'>
-    <%= f.file_field :upload, size: 30 %>
-  </div></div><br><br>
   <div class='row'>
-  <div class="small-10 large-centered columns listiing_title8"><br><h5>Amenities</h5><br>
-  <%= f.collection_check_boxes(:amenity_ids, Amenity.all, :id, :name) %>
-  </div></div><br><br>
+    <div class="medium-10 medium-centered columns small-10 small-centered columns">
+      <div class="panel">
+        <div class="form-field">
+          <h5>Amenities</h5><br>
+          <%= f.collection_check_boxes(:amenity_ids, Amenity.all, :id, :name) %>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class='row'>
-  <div class="small-5 large-centered columns">
+    <div class="medium-6 medium-centered columns small-10 small-centered columns">
       <%= f.submit class: "button" %>
       <%= link_to "Cancel", listings_list_path, class: 'button' %>
-    </p></div></div>
+    </div>
+  </div>
   
 <% end %>
-</div><br><br>
+</div>

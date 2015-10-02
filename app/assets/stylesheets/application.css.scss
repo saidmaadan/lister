@@ -33,7 +33,7 @@
 .top-bar .name a {
   font-weight: 900;
   font-size: 2em;
-  color: #A8CCED;
+  color: #008cba;
   padding: 0 45px;
   
 }
@@ -42,7 +42,7 @@
  .top-bar-section {
   font-weight: bold;
   font-size: 1.7em;
-  color: #A8CCED;
+  color: #008cba;
   padding: 0 25px;
   background: #fff }
 
@@ -50,14 +50,14 @@
   	background: #fff;
   	font-weight: normal;
     font-size: 1em;
-    color: #A8CCED;
+    color: #008cba;
     font-weight: 900;
 
   }
 
   .top-bar-section li:not(.has-form) a:not(.button):hover{
   	background: #fff;
-    color: #008cba;
+    color: #A8CCED;
 
   }
 .top-bar-section ul li{
@@ -72,7 +72,7 @@
     padding: 0 40px 0 15px;
     color: white;
     position: relative;
-    background-color: #A8CCED;
+    background-color: #008cba;
 }
 * {
 margin: 0;
@@ -81,16 +81,35 @@ html, body {
 height: 100%;
 }
 main {
-
+  
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -4em;
 	margin-top: 100px;
 }
+// footer{
+//   width: 100%;
+//   margin-bottom: 0;
+//   clear: both;
+//   bottom: 0;
+//   left: 0;
+//   border-top: 2px solid #ddd;
+//   //font-family: JobInboxFont7, Arial, sans-serif;
+//   font-family: 'Enriqueta', serif;
+//   .foot{
+//     //font-family: JobInboxFont7, Arial, sans-serif;
+//     padding: 50px auto;
+//     color: #333;
+//     padding-top: 20px;
+//     padding-bottom: 30px;
+//     font-size: 15px;
+//     background: #A8CCED;
+//   }
+// }
 footer, .push {
-height: 4em;
-clear: both;
+  height: 4em;
+  clear: both;
 }
 
 .home_image, .push {
@@ -101,9 +120,10 @@ footer{
   height: 120px;
   margin-top: 40px;
   background: #A8CCED;
-  margin-bottom: 0;
   border-top: 3px solid #eee;
+  margin-bottom: 0;
   clear: both;
+  
 }
 .foot{
   margin-top: 60px;

@@ -49,6 +49,10 @@
  
 
 }
+.list-page{
+  height: 100%;
+  margin-bottom: 100px;
+}
 
 .wrap{
   position: relative;
@@ -120,60 +124,84 @@ section{
 	margin-top: -40px;
 	top: 0;
 }
-.listiing_title{
-	min-height: 150px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
+
+.panel{
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  background: #9EC6DB;
+  border: 2px solid #9DBDC9;
+  border-radius: 20px;
+  .form-field{
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
 }
+
 .listiing_title1{
-	min-height: 150px;
+	height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
 	background: #9EC6DB;
 	border: 2px solid #9DBDC9;
 	border-radius: 20px;
 }
 .listiing_title2{
-	min-height: 150px;
+	height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
 	background: #9EC6DB;
 	border: 2px solid #9DBDC9;
 	border-radius: 20px;
 }
 .listiing_title3{
-	min-height: 260px;
+	height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
 	background: #9EC6DB;
 	border: 2px solid #9DBDC9;
 	border-radius: 20px;
 }
 .listiing_title4{
-	min-height: 150px;
+	height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
 	background: #9EC6DB;
 	border: 2px solid #9DBDC9;
 	border-radius: 20px;
 }
 .listiing_title5{
-	min-height: 150px;
+	height: 100%;
+  padding: 15px;
 	background: #9EC6DB;
 	border: 2px solid #9DBDC9;
 	border-radius: 20px;
 }
 .listiing_title6{
-	min-height: 150px;
+	height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
 	background: #9EC6DB;
 	border: 2px solid #9DBDC9;
 	border-radius: 20px;
 }
 .listiing_title7{
-	min-height: 150px;
+	height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
 	background: #9EC6DB;
 	border: 2px solid #9DBDC9;
 	border-radius: 20px;
 }
 .listiing_title8{
-	min-height: 250px;
+	height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
 	background: #9EC6DB;
 	border: 2px solid #9DBDC9;
 	border-radius: 20px;
 }
+
 // .price, button{
 // 	width: 280px;
 // }
