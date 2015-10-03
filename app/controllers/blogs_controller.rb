@@ -8,15 +8,15 @@ class BlogsController < ApplicationController
   end
 
   def show
-		@blog = Blog.find(params[:id])
+		@blog = Blog.friendly.find(params[:id])
 	end
 
 	def edit
-		@blog = Blog.find(params[:id])
+		@blog = Blog.friendly.find(params[:id])
 	end
 
 	def update
-		@blog = Blog.find(params[:id])
+		@blog = Blog.friendly.find(params[:id])
 		if @blog.update(blog_params)
 			redirect_to @blog, notice: "Your post successfully updated"
 		else
@@ -41,7 +41,7 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-  	@blog = Blog.find(params[:id])
+  	@blog = Blog.friendly.find(params[:id])
   	@blog.destroy
   	redirect_to blogs_path, alert: "Post successfully deleted!"
   end

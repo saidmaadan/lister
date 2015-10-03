@@ -1,31 +1,34 @@
 <div class='row'>
-<div class='small-8 large-centered columns'>
+  <div class='large-9 columns medium-8 columns small-12 columns'>
+    <header>
+      <h3><%= @blog.title %></h3>
+    </header>
+    <p>
+      <%= @blog.content %>
+    </p>
+    <nav>
+      <% if current_user %>
+      <%# end %>
+      <%# if correct_user %>
+      <% if current_user_admin? %>
+        <%= link_to 'Edit', edit_blog_path(@blog), class: 'button' %>
+        <%= link_to 'Delete', @blog, class: 'button', method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <% end %>
+    </nav>
+  </div>
+  <div class='large-3 columns medium-4 columns hide-for-small-only'>
+    <br><br>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- MasmaSpace News -->
+      <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:600px"
+         data-ad-client="ca-pub-1207389406711656"
+         data-ad-slot="8952579198"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    
+  </div>
 
-<header>
-    
-    <h3><%= @blog.title %></h3>
-    
-    
-  </header>
-  
-  <p>
-    <%= @blog.content %>
-  </p>
-
-  <nav>
-    
-
-    <% if current_user %>
-    
-    <%# end %>
-    <%# if correct_user %>
-     <% if current_user_admin? %>
-      <%= link_to 'Edit', edit_blog_path(@blog), class: 'button' %>
-      
-      
-      <%= link_to 'Delete', @blog, 
-                  class: 'button',
-                  method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <% end %>
-                  <% end %>
-    </nav></div></div>
+</div>

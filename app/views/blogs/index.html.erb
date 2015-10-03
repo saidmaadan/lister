@@ -1,40 +1,61 @@
 <div class='row'>
-<div class='small-8 large-centered columns'>
-
-<dl class="sub-nav">
-  <dt>Filter:</dt>
-  <dd class="active"><%= link_to 'Dashboard', current_user %></dd>
-  <dd><%= link_to 'Profile', profile_path(current_user)
-                   %></dd>
-  <dd><%= link_to 'Add Listing', new_listing_path %></dd>
-  <dd><%= link_to 'Create Post', new_blog_path %></dd>
-  <dd><%= link_to 'All Listings', listings_list_path %></dd>
-</dl>
-</div></div>
-
-<div class='row'>
-
-
-<% if @blogs.any? %>
-  <div class="row">
-    <h1>Blog</h1>
-
-    <% @blogs.in_groups_of(4) do |group| %>
-      <div class="row">
-        <% group.each do |blog| %>
-          <% if blog %>
-            <div class="medium-3 columns">
-              <div class="listing_list">
-              <h4><%= link_to(blog.title, blog) %></h4>
-              
-                <%= truncate(blog.content, length: 150, separator: ' ') %>
+  <% if current_user %>
+    <div class='large-8 large-centered columns medium-10 medium-centered columns small-12 large-centered columns'>
+      <dl class="sub-nav">
+        <dt>Filter:</dt>
+        <dd class="active"><%= link_to 'Dashboard', current_user %></dd>
+        <dd><%= link_to 'Profile', profile_path(current_user)
+                         %></dd>
+        <dd><%= link_to 'Add Listing', new_listing_path %></dd>
+        <dd><%= link_to 'Create Post', new_blog_path %></dd>
+        <dd><%= link_to 'All Listings', listings_list_path %></dd>
+      </dl>
+    </div>
+  
+    <div class='row'>
+      <div class='large-12 large-centered columns medium-12 medium-centered columns small-12 large-centered columns'>
+        <% if @blogs.any? %>
+          <div class="row">
+            <h1>Blog</h1>
+            <% @blogs.in_groups_of(4) do |group| %>
+              <div class="row">
+                <% group.each do |blog| %>
+                  <% if blog %>
+                    <div class="medium-3 columns">
+                      <div class="listing_list">
+                        <h4><%= link_to(blog.title, blog) %></h4>
+                        <%= truncate(blog.content, length: 150, separator: ' ') %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
-            </div>
             <% end %>
-          <% end %>
           </div>
         <% end %>
       </div>
+    </div>
+  <% else %>
+    <% if @blogs.any? %>
+      <div class="row">
+        <div class='large-12 large-centered columns medium-12 medium-centered columns small-12 large-centered columns'>
+          <h1>Blog</h1>
+          <% @blogs.in_groups_of(4) do |group| %>
+            <div class="row">
+              <% group.each do |blog| %>
+                <% if blog %>
+                  <div class="medium-3 columns small-12 columns">
+                    <div class="listing_list">
+                      <h4><%= link_to(blog.title, blog) %></h4>
+                      <%= truncate(blog.content, length: 150, separator: ' ') %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-
+  <% end %>
 </div>
