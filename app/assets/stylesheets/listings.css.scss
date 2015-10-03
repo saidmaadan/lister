@@ -29,9 +29,14 @@
     padding-top: 30px;
     // padding-botom: 20px;
     .looking{
-      color: #fff;
+      color: #007ab6;
       font-weight: 900;
       font-size: 30px;
+      text-align: center;
+      .fa{
+        margin-right: 10px;
+        color: #68b9ea;
+      }
     }
     input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
       height: 3.5rem;
@@ -138,70 +143,11 @@ section{
   }
 }
 
-.listiing_title1{
-	height: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
+.tabs-content{
+  img{
+    width: 100%;
+  }
 }
-.listiing_title2{
-	height: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
-}
-.listiing_title3{
-	height: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
-}
-.listiing_title4{
-	height: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
-}
-.listiing_title5{
-	height: 100%;
-  padding: 15px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
-}
-.listiing_title6{
-	height: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
-}
-.listiing_title7{
-	height: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
-}
-.listiing_title8{
-	height: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-	background: #9EC6DB;
-	border: 2px solid #9DBDC9;
-	border-radius: 20px;
-}
-
 // .price, button{
 // 	width: 280px;
 // }

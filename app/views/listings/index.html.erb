@@ -1,12 +1,12 @@
 
 <div class='home_image'>
-  <div class="large-10 large-centered columns form_search">
+  <div class="large-10 large-centered columns">
     <div class="search_home">
-      <label class='looking'>What are you looking for?</label>
+      <label class='looking'><i class="fa fa-search"></i>What are you looking for?</label>
       <%= form_tag search_listings_path, method: :get do %>
         <div class="row collapse">
           <div class="small-10 columns">
-            <%= text_field_tag :search, params[:search], placeholder: "Check out for a place to stay." %> 
+            <%= text_field_tag :search, params[:search], placeholder: "Find a place to stay, enter State, City or Zip." %> 
           </div>
           <div class="small-2 columns">
             <%= submit_tag "Search for Home", name: nil, class: "button postfix" %>
